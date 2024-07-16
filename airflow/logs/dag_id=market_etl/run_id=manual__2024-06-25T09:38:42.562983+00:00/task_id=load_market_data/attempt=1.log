@@ -1,0 +1,21 @@
+[2024-06-25T09:38:55.056+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-06-25T09:38:55.074+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.load_market_data manual__2024-06-25T09:38:42.562983+00:00 [queued]>
+[2024-06-25T09:38:55.080+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.load_market_data manual__2024-06-25T09:38:42.562983+00:00 [queued]>
+[2024-06-25T09:38:55.080+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-06-25T09:38:55.088+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): load_market_data> on 2024-06-25 09:38:42.562983+00:00
+[2024-06-25T09:38:55.106+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=79) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-06-25T09:38:55.107+0000] {standard_task_runner.py:63} INFO - Started process 81 to run task
+[2024-06-25T09:38:55.108+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'load_market_data', 'manual__2024-06-25T09:38:42.562983+00:00', '--job-id', '18', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpk59838tn']
+[2024-06-25T09:38:55.110+0000] {standard_task_runner.py:91} INFO - Job 18: Subtask load_market_data
+[2024-06-25T09:38:55.153+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.load_market_data manual__2024-06-25T09:38:42.562983+00:00 [running]> on host f3f48f0457b9
+[2024-06-25T09:38:55.325+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='load_market_data' AIRFLOW_CTX_EXECUTION_DATE='2024-06-25T09:38:42.562983+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-06-25T09:38:42.562983+00:00'
+[2024-06-25T09:38:55.326+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-06-25T09:38:55.336+0000] {base.py:84} INFO - Using connection ID 'market_database_conn' for task execution.
+[2024-06-25T09:38:55.354+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-06-25T09:38:55.354+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-06-25T09:38:55.377+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=load_market_data, run_id=manual__2024-06-25T09:38:42.562983+00:00, execution_date=20240625T093842, start_date=20240625T093855, end_date=20240625T093855
+[2024-06-25T09:38:55.412+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-06-25T09:38:55.428+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-06-25T09:38:55.429+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

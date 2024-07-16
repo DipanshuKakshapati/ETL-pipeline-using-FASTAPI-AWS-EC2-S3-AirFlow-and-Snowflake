@@ -1,0 +1,1 @@
+[2024-07-11T06:33:02.501+0000] {scheduler_job_runner.py:769} ERROR - Executor reports task instance <TaskInstance: market_etl.upload_to_s3 scheduled__2024-07-10T06:15:00+00:00 [queued]> finished (success) although the task says it's queued. (Info: None) Was the task killed externally?

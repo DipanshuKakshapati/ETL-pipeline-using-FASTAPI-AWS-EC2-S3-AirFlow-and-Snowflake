@@ -1,0 +1,99 @@
+[2024-07-10T09:17:49.831+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-10T09:17:49.846+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.flatten_market_data scheduled__2024-07-04T06:15:00+00:00 [queued]>
+[2024-07-10T09:17:49.853+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.flatten_market_data scheduled__2024-07-04T06:15:00+00:00 [queued]>
+[2024-07-10T09:17:49.853+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-10T09:17:49.862+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): flatten_market_data> on 2024-07-04 06:15:00+00:00
+[2024-07-10T09:17:49.872+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=47) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-10T09:17:49.876+0000] {standard_task_runner.py:63} INFO - Started process 49 to run task
+[2024-07-10T09:17:49.877+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'flatten_market_data', 'scheduled__2024-07-04T06:15:00+00:00', '--job-id', '366', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpkj652h1e']
+[2024-07-10T09:17:49.883+0000] {standard_task_runner.py:91} INFO - Job 366: Subtask flatten_market_data
+[2024-07-10T09:17:49.958+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.flatten_market_data scheduled__2024-07-04T06:15:00+00:00 [running]> on host 514b016b59c3
+[2024-07-10T09:17:50.091+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='flatten_market_data' AIRFLOW_CTX_EXECUTION_DATE='2024-07-04T06:15:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-07-04T06:15:00+00:00'
+[2024-07-10T09:17:50.092+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-10T09:17:50.111+0000] {python.py:237} INFO - Done. Returned value was:     Symbol  ...  Close_Date
+0     ADBL  ...  2024-07-09
+1      AHL  ...  2024-07-09
+2     AHPC  ...  2024-07-09
+3    AKJCL  ...  2024-07-09
+4     AKPL  ...  2024-07-09
+..     ...  ...         ...
+310   USHL  ...  2024-07-09
+311   USLB  ...  2024-07-09
+312   VLBS  ...  2024-07-09
+313  VLUCL  ...  2024-07-09
+314   WNLB  ...  2024-07-09
+
+[315 rows x 15 columns]
+[2024-07-10T09:17:50.131+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-10T09:17:50.195+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=flatten_market_data, run_id=scheduled__2024-07-04T06:15:00+00:00, execution_date=20240704T061500, start_date=20240710T091749, end_date=20240710T091750
+[2024-07-10T09:17:50.225+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-10T09:17:50.249+0000] {taskinstance.py:3503} INFO - 4 downstream tasks scheduled from follow-on schedule check
+[2024-07-10T09:17:50.250+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-10T14:19:38.331+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-10T14:19:38.347+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.flatten_market_data scheduled__2024-07-04T06:15:00+00:00 [queued]>
+[2024-07-10T14:19:38.352+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.flatten_market_data scheduled__2024-07-04T06:15:00+00:00 [queued]>
+[2024-07-10T14:19:38.352+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-10T14:19:38.359+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): flatten_market_data> on 2024-07-04 06:15:00+00:00
+[2024-07-10T14:19:38.363+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=119) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-10T14:19:38.364+0000] {standard_task_runner.py:63} INFO - Started process 121 to run task
+[2024-07-10T14:19:38.364+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'flatten_market_data', 'scheduled__2024-07-04T06:15:00+00:00', '--job-id', '770', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpufcyoy9c']
+[2024-07-10T14:19:38.366+0000] {standard_task_runner.py:91} INFO - Job 770: Subtask flatten_market_data
+[2024-07-10T14:19:38.427+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.flatten_market_data scheduled__2024-07-04T06:15:00+00:00 [running]> on host 514b016b59c3
+[2024-07-10T14:19:38.608+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='flatten_market_data' AIRFLOW_CTX_EXECUTION_DATE='2024-07-04T06:15:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-07-04T06:15:00+00:00'
+[2024-07-10T14:19:38.609+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-10T14:19:38.631+0000] {python.py:237} INFO - Done. Returned value was:     Symbol  ...  Close_Date
+0     ADBL  ...  2024-07-09
+1      AHL  ...  2024-07-09
+2     AHPC  ...  2024-07-09
+3    AKJCL  ...  2024-07-09
+4     AKPL  ...  2024-07-09
+..     ...  ...         ...
+310   USHL  ...  2024-07-09
+311   USLB  ...  2024-07-09
+312   VLBS  ...  2024-07-09
+313  VLUCL  ...  2024-07-09
+314   WNLB  ...  2024-07-09
+
+[315 rows x 15 columns]
+[2024-07-10T14:19:38.649+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-10T14:19:38.746+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=flatten_market_data, run_id=scheduled__2024-07-04T06:15:00+00:00, execution_date=20240704T061500, start_date=20240710T141938, end_date=20240710T141938
+[2024-07-10T14:19:38.767+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-10T14:19:38.801+0000] {taskinstance.py:3503} INFO - 3 downstream tasks scheduled from follow-on schedule check
+[2024-07-10T14:19:38.802+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-11T08:20:56.772+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-11T08:20:56.788+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.flatten_market_data scheduled__2024-07-04T06:15:00+00:00 [queued]>
+[2024-07-11T08:20:56.795+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.flatten_market_data scheduled__2024-07-04T06:15:00+00:00 [queued]>
+[2024-07-11T08:20:56.795+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-11T08:20:56.805+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): flatten_market_data> on 2024-07-04 06:15:00+00:00
+[2024-07-11T08:20:56.813+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=1023) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-11T08:20:56.815+0000] {standard_task_runner.py:63} INFO - Started process 1025 to run task
+[2024-07-11T08:20:56.816+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'flatten_market_data', 'scheduled__2024-07-04T06:15:00+00:00', '--job-id', '1171', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpwsp2z4ry']
+[2024-07-11T08:20:56.818+0000] {standard_task_runner.py:91} INFO - Job 1171: Subtask flatten_market_data
+[2024-07-11T08:20:56.907+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.flatten_market_data scheduled__2024-07-04T06:15:00+00:00 [running]> on host aa283b53dd54
+[2024-07-11T08:20:57.023+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='flatten_market_data' AIRFLOW_CTX_EXECUTION_DATE='2024-07-04T06:15:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-07-04T06:15:00+00:00'
+[2024-07-11T08:20:57.024+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-11T08:20:57.034+0000] {python.py:237} INFO - Done. Returned value was:       Symbol  ...  Close_Date
+0       ADBL  ...  2024-07-10
+1    ADBLD83  ...  2024-07-10
+2        AHL  ...  2024-07-10
+3       AHPC  ...  2024-07-10
+4      AKJCL  ...  2024-07-10
+..       ...  ...         ...
+316     USHL  ...  2024-07-10
+317     USLB  ...  2024-07-10
+318     VLBS  ...  2024-07-10
+319    VLUCL  ...  2024-07-10
+320     WNLB  ...  2024-07-10
+
+[321 rows x 15 columns]
+[2024-07-11T08:20:57.051+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-11T08:20:57.134+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=flatten_market_data, run_id=scheduled__2024-07-04T06:15:00+00:00, execution_date=20240704T061500, start_date=20240711T082056, end_date=20240711T082057
+[2024-07-11T08:20:57.167+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-11T08:20:57.222+0000] {taskinstance.py:3503} INFO - 3 downstream tasks scheduled from follow-on schedule check
+[2024-07-11T08:20:57.223+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

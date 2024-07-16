@@ -1,0 +1,54 @@
+[2024-07-09T06:44:21.087+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-09T06:44:21.104+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.create_fact_table scheduled__2024-06-25T00:00:00+00:00 [queued]>
+[2024-07-09T06:44:21.113+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.create_fact_table scheduled__2024-06-25T00:00:00+00:00 [queued]>
+[2024-07-09T06:44:21.114+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 4
+[2024-07-09T06:44:21.121+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): create_fact_table> on 2024-06-25 00:00:00+00:00
+[2024-07-09T06:44:21.139+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=49) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-09T06:44:21.151+0000] {standard_task_runner.py:63} INFO - Started process 53 to run task
+[2024-07-09T06:44:21.153+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'create_fact_table', 'scheduled__2024-06-25T00:00:00+00:00', '--job-id', '15', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpjaav598e']
+[2024-07-09T06:44:21.161+0000] {standard_task_runner.py:91} INFO - Job 15: Subtask create_fact_table
+[2024-07-09T06:44:21.261+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.create_fact_table scheduled__2024-06-25T00:00:00+00:00 [running]> on host e3bf5389da5f
+[2024-07-09T06:44:21.601+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='create_fact_table' AIRFLOW_CTX_EXECUTION_DATE='2024-06-25T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-25T00:00:00+00:00'
+[2024-07-09T06:44:21.604+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-09T06:44:21.607+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-09T06:44:21.607+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/decorators/base.py", line 265, in execute
+    return_value = super().execute(context)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/etl.py", line 54, in create_fact_table
+    fact_table = df[['SECURITY_ID', 'Close_Date', 'TOTAL_TRADED_QUANTITY', 'CLOSE_PRICE', 'LAST_UPDATED_PRICE', 'TOTAL_TRADES', 'AVERAGE_TRADED_PRICE']].copy()
+                 ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/frame.py", line 3899, in __getitem__
+    indexer = self.columns._get_indexer_strict(key, "columns")[1]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 6115, in _get_indexer_strict
+    self._raise_if_missing(keyarr, indexer, axis_name)
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 6179, in _raise_if_missing
+    raise KeyError(f"{not_found} not in index")
+KeyError: "['SECURITY_ID', 'TOTAL_TRADED_QUANTITY', 'CLOSE_PRICE', 'LAST_UPDATED_PRICE', 'TOTAL_TRADES', 'AVERAGE_TRADED_PRICE'] not in index"
+[2024-07-09T06:44:21.640+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=market_etl, task_id=create_fact_table, run_id=scheduled__2024-06-25T00:00:00+00:00, execution_date=20240625T000000, start_date=20240709T064421, end_date=20240709T064421
+[2024-07-09T06:44:21.658+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 15 for task create_fact_table ("['SECURITY_ID', 'TOTAL_TRADED_QUANTITY', 'CLOSE_PRICE', 'LAST_UPDATED_PRICE', 'TOTAL_TRADES', 'AVERAGE_TRADED_PRICE'] not in index"; 53)
+[2024-07-09T06:44:21.664+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-07-09T06:44:21.691+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-09T06:44:21.692+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

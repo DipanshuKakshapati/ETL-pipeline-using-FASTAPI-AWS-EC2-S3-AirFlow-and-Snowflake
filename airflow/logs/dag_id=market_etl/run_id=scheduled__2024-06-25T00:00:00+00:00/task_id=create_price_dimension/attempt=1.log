@@ -1,0 +1,402 @@
+[2024-07-09T06:39:18.712+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-09T06:39:18.745+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.create_price_dimension scheduled__2024-06-25T00:00:00+00:00 [queued]>
+[2024-07-09T06:39:18.754+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.create_price_dimension scheduled__2024-06-25T00:00:00+00:00 [queued]>
+[2024-07-09T06:39:18.754+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-09T06:39:18.769+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): create_price_dimension> on 2024-06-25 00:00:00+00:00
+[2024-07-09T06:39:18.776+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=80) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-09T06:39:18.777+0000] {standard_task_runner.py:63} INFO - Started process 104 to run task
+[2024-07-09T06:39:18.778+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'create_price_dimension', 'scheduled__2024-06-25T00:00:00+00:00', '--job-id', '12', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmprjouyknm']
+[2024-07-09T06:39:18.779+0000] {standard_task_runner.py:91} INFO - Job 12: Subtask create_price_dimension
+[2024-07-09T06:39:18.847+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.create_price_dimension scheduled__2024-06-25T00:00:00+00:00 [running]> on host e3bf5389da5f
+[2024-07-09T06:39:19.156+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='create_price_dimension' AIRFLOW_CTX_EXECUTION_DATE='2024-06-25T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-25T00:00:00+00:00'
+[2024-07-09T06:39:19.158+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-09T06:39:19.160+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-09T06:39:19.160+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/decorators/base.py", line 265, in execute
+    return_value = super().execute(context)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/etl.py", line 73, in create_price_dimension
+    price_dimension = df[['SECURITY_ID', 'SYMBOL', 'OPEN_PRICE', 'HIGH_PRICE', 'LOW_PRICE', 'CLOSE_PRICE', 'LAST_UPDATED_PRICE', 'PREVIOUS_DAY_PRICE']].drop_duplicates().copy()
+                      ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/frame.py", line 3899, in __getitem__
+    indexer = self.columns._get_indexer_strict(key, "columns")[1]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 6115, in _get_indexer_strict
+    self._raise_if_missing(keyarr, indexer, axis_name)
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 6176, in _raise_if_missing
+    raise KeyError(f"None of [{key}] are in the [{axis_name}]")
+KeyError: "None of [Index(['SECURITY_ID', 'SYMBOL', 'OPEN_PRICE', 'HIGH_PRICE', 'LOW_PRICE',\n       'CLOSE_PRICE', 'LAST_UPDATED_PRICE', 'PREVIOUS_DAY_PRICE'],\n      dtype='object')] are in the [columns]"
+[2024-07-09T06:39:19.189+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=market_etl, task_id=create_price_dimension, run_id=scheduled__2024-06-25T00:00:00+00:00, execution_date=20240625T000000, start_date=20240709T063918, end_date=20240709T063919
+[2024-07-09T06:39:19.204+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 12 for task create_price_dimension ("None of [Index(['SECURITY_ID', 'SYMBOL', 'OPEN_PRICE', 'HIGH_PRICE', 'LOW_PRICE',\n       'CLOSE_PRICE', 'LAST_UPDATED_PRICE', 'PREVIOUS_DAY_PRICE'],\n      dtype='object')] are in the [columns]"; 104)
+[2024-07-09T06:39:19.249+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-07-09T06:39:19.279+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-09T06:50:35.039+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-09T06:50:35.078+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.create_price_dimension scheduled__2024-06-25T00:00:00+00:00 [queued]>
+[2024-07-09T06:50:35.088+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.create_price_dimension scheduled__2024-06-25T00:00:00+00:00 [queued]>
+[2024-07-09T06:50:35.089+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-09T06:50:35.127+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): create_price_dimension> on 2024-06-25 00:00:00+00:00
+[2024-07-09T06:50:35.151+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=97) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-09T06:50:35.155+0000] {standard_task_runner.py:63} INFO - Started process 103 to run task
+[2024-07-09T06:50:35.155+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'create_price_dimension', 'scheduled__2024-06-25T00:00:00+00:00', '--job-id', '26', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpi0rhscmi']
+[2024-07-09T06:50:35.157+0000] {standard_task_runner.py:91} INFO - Job 26: Subtask create_price_dimension
+[2024-07-09T06:50:35.256+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.create_price_dimension scheduled__2024-06-25T00:00:00+00:00 [running]> on host db136e5a2a84
+[2024-07-09T06:50:35.473+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='create_price_dimension' AIRFLOW_CTX_EXECUTION_DATE='2024-06-25T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-25T00:00:00+00:00'
+[2024-07-09T06:50:35.475+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-09T06:50:35.478+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-09T06:50:35.479+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/decorators/base.py", line 265, in execute
+    return_value = super().execute(context)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/etl.py", line 76, in create_price_dimension
+    price_dimension = df[['SECURITY_ID', 'SYMBOL', 'OPEN_PRICE', 'HIGH_PRICE', 'LOW_PRICE', 'CLOSE_PRICE', 'LAST_UPDATED_PRICE', 'PREVIOUS_DAY_PRICE']].drop_duplicates().copy()
+                      ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/frame.py", line 3899, in __getitem__
+    indexer = self.columns._get_indexer_strict(key, "columns")[1]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 6115, in _get_indexer_strict
+    self._raise_if_missing(keyarr, indexer, axis_name)
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 6176, in _raise_if_missing
+    raise KeyError(f"None of [{key}] are in the [{axis_name}]")
+KeyError: "None of [Index(['SECURITY_ID', 'SYMBOL', 'OPEN_PRICE', 'HIGH_PRICE', 'LOW_PRICE',\n       'CLOSE_PRICE', 'LAST_UPDATED_PRICE', 'PREVIOUS_DAY_PRICE'],\n      dtype='object')] are in the [columns]"
+[2024-07-09T06:50:35.507+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=market_etl, task_id=create_price_dimension, run_id=scheduled__2024-06-25T00:00:00+00:00, execution_date=20240625T000000, start_date=20240709T065035, end_date=20240709T065035
+[2024-07-09T06:50:35.540+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 26 for task create_price_dimension ("None of [Index(['SECURITY_ID', 'SYMBOL', 'OPEN_PRICE', 'HIGH_PRICE', 'LOW_PRICE',\n       'CLOSE_PRICE', 'LAST_UPDATED_PRICE', 'PREVIOUS_DAY_PRICE'],\n      dtype='object')] are in the [columns]"; 103)
+[2024-07-09T06:50:35.587+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-07-09T06:50:35.612+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-09T06:50:35.613+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-09T07:04:03.504+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-09T07:04:03.522+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.create_price_dimension scheduled__2024-06-25T00:00:00+00:00 [queued]>
+[2024-07-09T07:04:03.543+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.create_price_dimension scheduled__2024-06-25T00:00:00+00:00 [queued]>
+[2024-07-09T07:04:03.543+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-09T07:04:03.559+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): create_price_dimension> on 2024-06-25 00:00:00+00:00
+[2024-07-09T07:04:03.575+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=67) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-09T07:04:03.578+0000] {standard_task_runner.py:63} INFO - Started process 91 to run task
+[2024-07-09T07:04:03.582+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'create_price_dimension', 'scheduled__2024-06-25T00:00:00+00:00', '--job-id', '46', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpquze875_']
+[2024-07-09T07:04:03.585+0000] {standard_task_runner.py:91} INFO - Job 46: Subtask create_price_dimension
+[2024-07-09T07:04:03.641+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.create_price_dimension scheduled__2024-06-25T00:00:00+00:00 [running]> on host 2e2a7ed5b072
+[2024-07-09T07:04:03.840+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='create_price_dimension' AIRFLOW_CTX_EXECUTION_DATE='2024-06-25T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-25T00:00:00+00:00'
+[2024-07-09T07:04:03.842+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-09T07:04:03.845+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-09T07:04:03.845+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'Close_Date'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/decorators/base.py", line 265, in execute
+    return_value = super().execute(context)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/etl.py", line 78, in create_price_dimension
+    price_dimension['PRICE_ID'] = price_dimension.apply(lambda x: f"{x['Symbol']}_{x['Close_Date']}", axis=1)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/frame.py", line 10034, in apply
+    return op.apply().__finalize__(self, method="apply")
+           ^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/apply.py", line 837, in apply
+    return self.apply_standard()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/apply.py", line 965, in apply_standard
+    results, res_index = self.apply_series_generator()
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/apply.py", line 981, in apply_series_generator
+    results[i] = self.func(v, *self.args, **self.kwargs)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/etl.py", line 78, in <lambda>
+    price_dimension['PRICE_ID'] = price_dimension.apply(lambda x: f"{x['Symbol']}_{x['Close_Date']}", axis=1)
+                                                                                   ~^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/series.py", line 1040, in __getitem__
+    return self._get_value(key)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/series.py", line 1156, in _get_value
+    loc = self.index.get_loc(label)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'Close_Date'
+[2024-07-09T07:04:03.866+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=market_etl, task_id=create_price_dimension, run_id=scheduled__2024-06-25T00:00:00+00:00, execution_date=20240625T000000, start_date=20240709T070403, end_date=20240709T070403
+[2024-07-09T07:04:03.874+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 46 for task create_price_dimension ('Close_Date'; 91)
+[2024-07-09T07:04:03.886+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-07-09T07:04:03.908+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-09T07:04:03.909+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-09T07:07:27.514+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-09T07:07:27.575+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.create_price_dimension scheduled__2024-06-25T00:00:00+00:00 [queued]>
+[2024-07-09T07:07:27.595+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.create_price_dimension scheduled__2024-06-25T00:00:00+00:00 [queued]>
+[2024-07-09T07:07:27.600+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-09T07:07:27.625+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): create_price_dimension> on 2024-06-25 00:00:00+00:00
+[2024-07-09T07:07:27.641+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=63) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-09T07:07:27.643+0000] {standard_task_runner.py:63} INFO - Started process 72 to run task
+[2024-07-09T07:07:27.644+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'create_price_dimension', 'scheduled__2024-06-25T00:00:00+00:00', '--job-id', '54', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpae5k6q1b']
+[2024-07-09T07:07:27.648+0000] {standard_task_runner.py:91} INFO - Job 54: Subtask create_price_dimension
+[2024-07-09T07:07:27.731+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.create_price_dimension scheduled__2024-06-25T00:00:00+00:00 [running]> on host 476be1a8a233
+[2024-07-09T07:07:28.186+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='create_price_dimension' AIRFLOW_CTX_EXECUTION_DATE='2024-06-25T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-25T00:00:00+00:00'
+[2024-07-09T07:07:28.188+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-09T07:07:28.192+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-09T07:07:28.193+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3791, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 152, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 181, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'Close_Date'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/decorators/base.py", line 265, in execute
+    return_value = super().execute(context)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/etl.py", line 78, in create_price_dimension
+    price_dimension['PRICE_ID'] = price_dimension.apply(lambda x: f"{x['Symbol']}_{x['Close_Date']}", axis=1)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/frame.py", line 10034, in apply
+    return op.apply().__finalize__(self, method="apply")
+           ^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/apply.py", line 837, in apply
+    return self.apply_standard()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/apply.py", line 965, in apply_standard
+    results, res_index = self.apply_series_generator()
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/apply.py", line 981, in apply_series_generator
+    results[i] = self.func(v, *self.args, **self.kwargs)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/etl.py", line 78, in <lambda>
+    price_dimension['PRICE_ID'] = price_dimension.apply(lambda x: f"{x['Symbol']}_{x['Close_Date']}", axis=1)
+                                                                                   ~^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/series.py", line 1040, in __getitem__
+    return self._get_value(key)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/series.py", line 1156, in _get_value
+    loc = self.index.get_loc(label)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3798, in get_loc
+    raise KeyError(key) from err
+KeyError: 'Close_Date'
+[2024-07-09T07:07:28.242+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=market_etl, task_id=create_price_dimension, run_id=scheduled__2024-06-25T00:00:00+00:00, execution_date=20240625T000000, start_date=20240709T070727, end_date=20240709T070728
+[2024-07-09T07:07:28.267+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 54 for task create_price_dimension ('Close_Date'; 72)
+[2024-07-09T07:07:28.283+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-07-09T07:07:28.316+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-09T07:07:28.317+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-09T07:51:22.522+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-09T07:51:22.538+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.create_price_dimension scheduled__2024-06-25T00:00:00+00:00 [queued]>
+[2024-07-09T07:51:22.545+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.create_price_dimension scheduled__2024-06-25T00:00:00+00:00 [queued]>
+[2024-07-09T07:51:22.546+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-09T07:51:22.553+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): create_price_dimension> on 2024-06-25 00:00:00+00:00
+[2024-07-09T07:51:22.558+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=69) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-09T07:51:22.560+0000] {standard_task_runner.py:63} INFO - Started process 75 to run task
+[2024-07-09T07:51:22.560+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'create_price_dimension', 'scheduled__2024-06-25T00:00:00+00:00', '--job-id', '64', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmp_s65yxjv']
+[2024-07-09T07:51:22.562+0000] {standard_task_runner.py:91} INFO - Job 64: Subtask create_price_dimension
+[2024-07-09T07:51:22.630+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.create_price_dimension scheduled__2024-06-25T00:00:00+00:00 [running]> on host c28bfc7b9d3e
+[2024-07-09T07:51:22.819+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='create_price_dimension' AIRFLOW_CTX_EXECUTION_DATE='2024-06-25T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-25T00:00:00+00:00'
+[2024-07-09T07:51:22.821+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-09T07:51:22.826+0000] {python.py:237} INFO - Done. Returned value was:     SECURITY_ID  OPEN_PRICE  ...  Close_Date                     PRICE_ID
+0          ADBL       282.0  ...  2024-07-08     ADBL_2024-07-08 00:00:00
+1       ADBLD83      1138.5  ...  2024-07-08  ADBLD83_2024-07-08 00:00:00
+2           AHL       527.3  ...  2024-07-08      AHL_2024-07-08 00:00:00
+3          AHPC       159.0  ...  2024-07-08     AHPC_2024-07-08 00:00:00
+4         AKJCL       235.0  ...  2024-07-08    AKJCL_2024-07-08 00:00:00
+..          ...         ...  ...         ...                          ...
+318        USHL       582.0  ...  2024-07-08     USHL_2024-07-08 00:00:00
+319        USLB      1695.4  ...  2024-07-08     USLB_2024-07-08 00:00:00
+320        VLBS      1048.0  ...  2024-07-08     VLBS_2024-07-08 00:00:00
+321       VLUCL       509.0  ...  2024-07-08    VLUCL_2024-07-08 00:00:00
+322        WNLB      1450.0  ...  2024-07-08     WNLB_2024-07-08 00:00:00
+
+[323 rows x 9 columns]
+[2024-07-09T07:51:22.837+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-09T07:51:22.944+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=create_price_dimension, run_id=scheduled__2024-06-25T00:00:00+00:00, execution_date=20240625T000000, start_date=20240709T075122, end_date=20240709T075122
+[2024-07-09T07:51:22.988+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-09T07:51:23.018+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-09T07:51:23.019+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-09T08:02:30.335+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-09T08:02:30.353+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.create_price_dimension scheduled__2024-06-25T00:00:00+00:00 [queued]>
+[2024-07-09T08:02:30.359+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.create_price_dimension scheduled__2024-06-25T00:00:00+00:00 [queued]>
+[2024-07-09T08:02:30.359+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-09T08:02:30.368+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): create_price_dimension> on 2024-06-25 00:00:00+00:00
+[2024-07-09T08:02:30.375+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=67) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-09T08:02:30.379+0000] {standard_task_runner.py:63} INFO - Started process 91 to run task
+[2024-07-09T08:02:30.382+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'create_price_dimension', 'scheduled__2024-06-25T00:00:00+00:00', '--job-id', '79', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmp3v03y0bv']
+[2024-07-09T08:02:30.385+0000] {standard_task_runner.py:91} INFO - Job 79: Subtask create_price_dimension
+[2024-07-09T08:02:30.434+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.create_price_dimension scheduled__2024-06-25T00:00:00+00:00 [running]> on host 85b7a2421f63
+[2024-07-09T08:02:30.626+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='create_price_dimension' AIRFLOW_CTX_EXECUTION_DATE='2024-06-25T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-25T00:00:00+00:00'
+[2024-07-09T08:02:30.627+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-09T08:02:30.633+0000] {python.py:237} INFO - Done. Returned value was:     SECURITY_ID  OPEN_PRICE  ...  Close_Date                     PRICE_ID
+0          ADBL       282.0  ...  2024-07-08     ADBL_2024-07-08 00:00:00
+1       ADBLD83      1138.5  ...  2024-07-08  ADBLD83_2024-07-08 00:00:00
+2           AHL       527.3  ...  2024-07-08      AHL_2024-07-08 00:00:00
+3          AHPC       159.0  ...  2024-07-08     AHPC_2024-07-08 00:00:00
+4         AKJCL       235.0  ...  2024-07-08    AKJCL_2024-07-08 00:00:00
+..          ...         ...  ...         ...                          ...
+318        USHL       582.0  ...  2024-07-08     USHL_2024-07-08 00:00:00
+319        USLB      1695.4  ...  2024-07-08     USLB_2024-07-08 00:00:00
+320        VLBS      1048.0  ...  2024-07-08     VLBS_2024-07-08 00:00:00
+321       VLUCL       509.0  ...  2024-07-08    VLUCL_2024-07-08 00:00:00
+322        WNLB      1450.0  ...  2024-07-08     WNLB_2024-07-08 00:00:00
+
+[323 rows x 9 columns]
+[2024-07-09T08:02:30.642+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-09T08:02:30.683+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=create_price_dimension, run_id=scheduled__2024-06-25T00:00:00+00:00, execution_date=20240625T000000, start_date=20240709T080230, end_date=20240709T080230
+[2024-07-09T08:02:30.726+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-09T08:02:30.775+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-07-09T08:02:30.777+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-09T08:36:18.962+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-09T08:36:18.977+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.create_price_dimension scheduled__2024-06-25T00:00:00+00:00 [queued]>
+[2024-07-09T08:36:18.983+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.create_price_dimension scheduled__2024-06-25T00:00:00+00:00 [queued]>
+[2024-07-09T08:36:18.983+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-09T08:36:18.992+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): create_price_dimension> on 2024-06-25 00:00:00+00:00
+[2024-07-09T08:36:19.005+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=66) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-09T08:36:19.006+0000] {standard_task_runner.py:63} INFO - Started process 91 to run task
+[2024-07-09T08:36:19.007+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'create_price_dimension', 'scheduled__2024-06-25T00:00:00+00:00', '--job-id', '91', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpe_2iuly5']
+[2024-07-09T08:36:19.009+0000] {standard_task_runner.py:91} INFO - Job 91: Subtask create_price_dimension
+[2024-07-09T08:36:19.068+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.create_price_dimension scheduled__2024-06-25T00:00:00+00:00 [running]> on host 9d8da6717a55
+[2024-07-09T08:36:19.216+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='create_price_dimension' AIRFLOW_CTX_EXECUTION_DATE='2024-06-25T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-25T00:00:00+00:00'
+[2024-07-09T08:36:19.217+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-09T08:36:19.223+0000] {python.py:237} INFO - Done. Returned value was:     SECURITY_ID  OPEN_PRICE  ...  Close_Date                     PRICE_ID
+0          ADBL       282.0  ...  2024-07-08     ADBL_2024-07-08 00:00:00
+1       ADBLD83      1138.5  ...  2024-07-08  ADBLD83_2024-07-08 00:00:00
+2           AHL       527.3  ...  2024-07-08      AHL_2024-07-08 00:00:00
+3          AHPC       159.0  ...  2024-07-08     AHPC_2024-07-08 00:00:00
+4         AKJCL       235.0  ...  2024-07-08    AKJCL_2024-07-08 00:00:00
+..          ...         ...  ...         ...                          ...
+318        USHL       582.0  ...  2024-07-08     USHL_2024-07-08 00:00:00
+319        USLB      1695.4  ...  2024-07-08     USLB_2024-07-08 00:00:00
+320        VLBS      1048.0  ...  2024-07-08     VLBS_2024-07-08 00:00:00
+321       VLUCL       509.0  ...  2024-07-08    VLUCL_2024-07-08 00:00:00
+322        WNLB      1450.0  ...  2024-07-08     WNLB_2024-07-08 00:00:00
+
+[323 rows x 9 columns]
+[2024-07-09T08:36:19.232+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-09T08:36:19.257+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=create_price_dimension, run_id=scheduled__2024-06-25T00:00:00+00:00, execution_date=20240625T000000, start_date=20240709T083618, end_date=20240709T083619
+[2024-07-09T08:36:19.271+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-09T08:36:19.298+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-09T08:41:05.099+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-09T08:41:05.127+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.create_price_dimension scheduled__2024-06-25T00:00:00+00:00 [queued]>
+[2024-07-09T08:41:05.133+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.create_price_dimension scheduled__2024-06-25T00:00:00+00:00 [queued]>
+[2024-07-09T08:41:05.133+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-09T08:41:05.159+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): create_price_dimension> on 2024-06-25 00:00:00+00:00
+[2024-07-09T08:41:05.165+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=62) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-09T08:41:05.168+0000] {standard_task_runner.py:63} INFO - Started process 69 to run task
+[2024-07-09T08:41:05.168+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'create_price_dimension', 'scheduled__2024-06-25T00:00:00+00:00', '--job-id', '98', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpi8hccdpi']
+[2024-07-09T08:41:05.171+0000] {standard_task_runner.py:91} INFO - Job 98: Subtask create_price_dimension
+[2024-07-09T08:41:05.245+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.create_price_dimension scheduled__2024-06-25T00:00:00+00:00 [running]> on host 7aa01bd35230
+[2024-07-09T08:41:05.464+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='create_price_dimension' AIRFLOW_CTX_EXECUTION_DATE='2024-06-25T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-25T00:00:00+00:00'
+[2024-07-09T08:41:05.466+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-09T08:41:05.472+0000] {python.py:237} INFO - Done. Returned value was:     SECURITY_ID  OPEN_PRICE  ...  Close_Date                     PRICE_ID
+0          ADBL       282.0  ...  2024-07-08     ADBL_2024-07-08 00:00:00
+1       ADBLD83      1138.5  ...  2024-07-08  ADBLD83_2024-07-08 00:00:00
+2           AHL       527.3  ...  2024-07-08      AHL_2024-07-08 00:00:00
+3          AHPC       159.0  ...  2024-07-08     AHPC_2024-07-08 00:00:00
+4         AKJCL       235.0  ...  2024-07-08    AKJCL_2024-07-08 00:00:00
+..          ...         ...  ...         ...                          ...
+318        USHL       582.0  ...  2024-07-08     USHL_2024-07-08 00:00:00
+319        USLB      1695.4  ...  2024-07-08     USLB_2024-07-08 00:00:00
+320        VLBS      1048.0  ...  2024-07-08     VLBS_2024-07-08 00:00:00
+321       VLUCL       509.0  ...  2024-07-08    VLUCL_2024-07-08 00:00:00
+322        WNLB      1450.0  ...  2024-07-08     WNLB_2024-07-08 00:00:00
+
+[323 rows x 9 columns]
+[2024-07-09T08:41:05.482+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-09T08:41:05.572+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=create_price_dimension, run_id=scheduled__2024-06-25T00:00:00+00:00, execution_date=20240625T000000, start_date=20240709T084105, end_date=20240709T084105
+[2024-07-09T08:41:05.598+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-09T08:41:05.620+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-09T08:41:05.621+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

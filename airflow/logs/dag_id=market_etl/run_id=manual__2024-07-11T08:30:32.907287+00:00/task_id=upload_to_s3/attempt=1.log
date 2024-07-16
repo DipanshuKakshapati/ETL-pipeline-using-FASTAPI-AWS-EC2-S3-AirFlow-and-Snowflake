@@ -1,0 +1,23 @@
+[2024-07-11T08:31:00.427+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-11T08:31:00.467+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.upload_to_s3 manual__2024-07-11T08:30:32.907287+00:00 [queued]>
+[2024-07-11T08:31:00.477+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.upload_to_s3 manual__2024-07-11T08:30:32.907287+00:00 [queued]>
+[2024-07-11T08:31:00.477+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-11T08:31:00.492+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): upload_to_s3> on 2024-07-11 08:30:32.907287+00:00
+[2024-07-11T08:31:00.529+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=134) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-11T08:31:00.536+0000] {standard_task_runner.py:63} INFO - Started process 141 to run task
+[2024-07-11T08:31:00.539+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'upload_to_s3', 'manual__2024-07-11T08:30:32.907287+00:00', '--job-id', '1264', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpt3rpg_wk']
+[2024-07-11T08:31:00.547+0000] {standard_task_runner.py:91} INFO - Job 1264: Subtask upload_to_s3
+[2024-07-11T08:31:00.674+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.upload_to_s3 manual__2024-07-11T08:30:32.907287+00:00 [running]> on host aa283b53dd54
+[2024-07-11T08:31:01.015+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='upload_to_s3' AIRFLOW_CTX_EXECUTION_DATE='2024-07-11T08:30:32.907287+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-07-11T08:30:32.907287+00:00'
+[2024-07-11T08:31:01.019+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-11T08:31:01.043+0000] {base.py:84} INFO - Using connection ID 'aws_default' for task execution.
+[2024-07-11T08:31:01.046+0000] {connection_wrapper.py:384} INFO - AWS Connection (conn_id='aws_default', conn_type='aws') credentials retrieved from login and password.
+[2024-07-11T08:31:01.046+0000] {connection_wrapper.py:401} INFO - AWS Connection (conn_id='aws_default', conn_type='aws') session token retrieved from extra, please note you are responsible for renewing these.
+[2024-07-11T08:31:04.391+0000] {python.py:237} INFO - Done. Returned value was: nepse_fact_table_2024-07-10.csv
+[2024-07-11T08:31:04.394+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-11T08:31:04.501+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=upload_to_s3, run_id=manual__2024-07-11T08:30:32.907287+00:00, execution_date=20240711T083032, start_date=20240711T083100, end_date=20240711T083104
+[2024-07-11T08:31:04.551+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-11T08:31:04.593+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-11T08:31:04.605+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

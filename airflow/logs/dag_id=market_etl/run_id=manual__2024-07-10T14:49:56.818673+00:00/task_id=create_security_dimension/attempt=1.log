@@ -1,0 +1,32 @@
+[2024-07-10T14:50:20.013+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-10T14:50:20.032+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.create_security_dimension manual__2024-07-10T14:49:56.818673+00:00 [queued]>
+[2024-07-10T14:50:20.038+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.create_security_dimension manual__2024-07-10T14:49:56.818673+00:00 [queued]>
+[2024-07-10T14:50:20.038+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-10T14:50:20.046+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): create_security_dimension> on 2024-07-10 14:49:56.818673+00:00
+[2024-07-10T14:50:20.053+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=97) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-10T14:50:20.055+0000] {standard_task_runner.py:63} INFO - Started process 102 to run task
+[2024-07-10T14:50:20.055+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'create_security_dimension', 'manual__2024-07-10T14:49:56.818673+00:00', '--job-id', '855', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpe96v0vjj']
+[2024-07-10T14:50:20.057+0000] {standard_task_runner.py:91} INFO - Job 855: Subtask create_security_dimension
+[2024-07-10T14:50:20.117+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.create_security_dimension manual__2024-07-10T14:49:56.818673+00:00 [running]> on host 514b016b59c3
+[2024-07-10T14:50:20.386+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='create_security_dimension' AIRFLOW_CTX_EXECUTION_DATE='2024-07-10T14:49:56.818673+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-07-10T14:49:56.818673+00:00'
+[2024-07-10T14:50:20.387+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-10T14:50:20.394+0000] {python.py:237} INFO - Done. Returned value was:     SECURITY_ID  MARKET_CAPITALIZATION  ...  FIFTY_TWO_WEEKS_LOW  SECURITY_STOCK_ID
+0          ADBL               38364.17  ...                220.5    ADBL_2024-07-09
+1           AHL                1772.42  ...                273.1     AHL_2024-07-09
+2          AHPC                5783.21  ...                149.0    AHPC_2024-07-09
+3         AKJCL                1768.00  ...                141.3   AKJCL_2024-07-09
+4          AKPL                6389.35  ...                152.4    AKPL_2024-07-09
+..          ...                    ...  ...                  ...                ...
+310        USHL                1266.54  ...                253.6    USHL_2024-07-09
+311        USLB                4438.40  ...                591.1    USLB_2024-07-09
+312        VLBS                7822.92  ...                546.1    VLBS_2024-07-09
+313       VLUCL                9811.13  ...                365.3   VLUCL_2024-07-09
+314        WNLB                1205.60  ...                680.0    WNLB_2024-07-09
+
+[315 rows x 5 columns]
+[2024-07-10T14:50:20.412+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-10T14:50:20.475+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=create_security_dimension, run_id=manual__2024-07-10T14:49:56.818673+00:00, execution_date=20240710T144956, start_date=20240710T145020, end_date=20240710T145020
+[2024-07-10T14:50:20.524+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-10T14:50:20.541+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

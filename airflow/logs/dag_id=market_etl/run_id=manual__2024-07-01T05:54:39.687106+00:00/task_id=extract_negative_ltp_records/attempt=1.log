@@ -1,0 +1,29 @@
+[2024-07-01T05:55:09.778+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-01T05:55:09.792+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.extract_negative_ltp_records manual__2024-07-01T05:54:39.687106+00:00 [queued]>
+[2024-07-01T05:55:09.797+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.extract_negative_ltp_records manual__2024-07-01T05:54:39.687106+00:00 [queued]>
+[2024-07-01T05:55:09.797+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-01T05:55:09.808+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): extract_negative_ltp_records> on 2024-07-01 05:54:39.687106+00:00
+[2024-07-01T05:55:09.813+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=88) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-01T05:55:09.814+0000] {standard_task_runner.py:63} INFO - Started process 92 to run task
+[2024-07-01T05:55:09.815+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'extract_negative_ltp_records', 'manual__2024-07-01T05:54:39.687106+00:00', '--job-id', '373', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpldm2kxyj']
+[2024-07-01T05:55:09.816+0000] {standard_task_runner.py:91} INFO - Job 373: Subtask extract_negative_ltp_records
+[2024-07-01T05:55:09.869+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.extract_negative_ltp_records manual__2024-07-01T05:54:39.687106+00:00 [running]> on host 5eec0a067191
+[2024-07-01T05:55:09.963+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='extract_negative_ltp_records' AIRFLOW_CTX_EXECUTION_DATE='2024-07-01T05:54:39.687106+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-07-01T05:54:39.687106+00:00'
+[2024-07-01T05:55:09.964+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-01T05:55:09.974+0000] {base.py:84} INFO - Using connection ID 'aws_default' for task execution.
+[2024-07-01T05:55:09.974+0000] {connection_wrapper.py:384} INFO - AWS Connection (conn_id='aws_default', conn_type='aws') credentials retrieved from login and password.
+[2024-07-01T05:55:09.975+0000] {connection_wrapper.py:401} INFO - AWS Connection (conn_id='aws_default', conn_type='aws') session token retrieved from extra, please note you are responsible for renewing these.
+[2024-07-01T05:55:11.780+0000] {python.py:237} INFO - Done. Returned value was: Symbol,Close_Price_Rs,Open_Price_Rs,High_Price_Rs,Low_Price_Rs,Total_Traded_Quantity,Total_Traded_Value,Total_Trades,LTP,Previous_Day_Close_Price_Rs,Average_Traded_Price_Rs,Fifty_Two_Week_High_Rs,Fifty_Two_Week_Low_Rs,Market_Capitalization_Rs__Amt_in_Millions,Close_Date
+ADBL,259.0,262.0,262.9,257.3,17310,4482561.4,133,259.00(-2),261.0,258.95,292.9,220.5,34839.84,2024-06-30
+ADBLD83,1091.0,1113.0,1113.0,1091.0,135,147505.0,3,"1,091.00(-44)",1135.0,1092.62,1144.0,941.0,0.0,2024-06-30
+AHL,503.0,524.0,524.0,501.1,10515,5323725.0,88,503.00(-11),514.0,506.29,547.0,273.1,1710.2,2024-06-30
+AHPC,149.1,152.0,152.0,149.0,140140,20998931.5,424,149.10(-1.9),151.0,149.84,304.0,149.0,5570.26,2024-06-30
+AKJCL,204.5,206.1,207.0,203.0,28990,5929235.0,127,204.50(-2.4),206.9,204.52,250.0,141.3,1636.0,2024-06-30
+
+[2024-07-01T05:55:11.781+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-01T05:55:11.807+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=extract_negative_ltp_records, run_id=manual__2024-07-01T05:54:39.687106+00:00, execution_date=20240701T055439, start_date=20240701T055509, end_date=20240701T055511
+[2024-07-01T05:55:11.852+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-01T05:55:11.879+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-07-01T05:55:11.881+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

@@ -1,0 +1,119 @@
+[2024-07-10T09:05:13.580+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-10T09:05:13.599+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.load_data_to_postgres manual__2024-07-10T08:55:25.813716+00:00 [queued]>
+[2024-07-10T09:05:13.605+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.load_data_to_postgres manual__2024-07-10T08:55:25.813716+00:00 [queued]>
+[2024-07-10T09:05:13.606+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 4
+[2024-07-10T09:05:13.630+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): load_data_to_postgres> on 2024-07-10 08:55:25.813716+00:00
+[2024-07-10T09:05:13.643+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=216) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-10T09:05:13.644+0000] {standard_task_runner.py:63} INFO - Started process 218 to run task
+[2024-07-10T09:05:13.645+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'load_data_to_postgres', 'manual__2024-07-10T08:55:25.813716+00:00', '--job-id', '270', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpe2nx51gz']
+[2024-07-10T09:05:13.648+0000] {standard_task_runner.py:91} INFO - Job 270: Subtask load_data_to_postgres
+[2024-07-10T09:05:13.719+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.load_data_to_postgres manual__2024-07-10T08:55:25.813716+00:00 [running]> on host 514b016b59c3
+[2024-07-10T09:05:14.037+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='load_data_to_postgres' AIRFLOW_CTX_EXECUTION_DATE='2024-07-10T08:55:25.813716+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-07-10T08:55:25.813716+00:00'
+[2024-07-10T09:05:14.038+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-10T09:05:14.056+0000] {base.py:84} INFO - Using connection ID 'market_database_conn' for task execution.
+[2024-07-10T09:05:14.146+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-10T09:05:14.147+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1890, in _execute_context
+    self.dialect.do_executemany(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 982, in do_executemany
+    context._psycopg2_fetched_rows = xtras.execute_values(
+                                     ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg2/extras.py", line 1299, in execute_values
+    cur.execute(b''.join(parts))
+psycopg2.errors.UndefinedColumn: column "SECURITY_STOCK_ID" of relation "security_dimension" does not exist
+LINE 1: ...", "FIFTY_TWO_WEEKS_HIGH", "FIFTY_TWO_WEEKS_LOW", "SECURITY_...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/decorators/base.py", line 265, in execute
+    return_value = super().execute(context)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/etl.py", line 114, in load_data_to_postgres
+    security_dimension.to_sql(
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/util/_decorators.py", line 333, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/generic.py", line 3008, in to_sql
+    return sql.to_sql(
+           ^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 788, in to_sql
+    return pandas_sql.to_sql(
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1958, in to_sql
+    total_inserted = sql_engine.insert_records(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1507, in insert_records
+    raise err
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1498, in insert_records
+    return table.insert(chunksize=chunksize, method=method)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1059, in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 951, in _execute_insert
+    result = conn.execute(self.table.insert(), data)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1385, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1890, in _execute_context
+    self.dialect.do_executemany(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 982, in do_executemany
+    context._psycopg2_fetched_rows = xtras.execute_values(
+                                     ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg2/extras.py", line 1299, in execute_values
+    cur.execute(b''.join(parts))
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column "SECURITY_STOCK_ID" of relation "security_dimension" does not exist
+LINE 1: ...", "FIFTY_TWO_WEEKS_HIGH", "FIFTY_TWO_WEEKS_LOW", "SECURITY_...
+                                                             ^
+
+[SQL: INSERT INTO security_dimension ("SECURITY_ID", "MARKET_CAPITALIZATION", "FIFTY_TWO_WEEKS_HIGH", "FIFTY_TWO_WEEKS_LOW", "SECURITY_STOCK_ID") VALUES (%(SECURITY_ID)s, %(MARKET_CAPITALIZATION)s, %(FIFTY_TWO_WEEKS_HIGH)s, %(FIFTY_TWO_WEEKS_LOW)s, %(SECURITY_STOCK_ID)s)]
+[parameters: ({'SECURITY_ID': 'ADBL', 'MARKET_CAPITALIZATION': 38364.17, 'FIFTY_TWO_WEEKS_HIGH': 292.9, 'FIFTY_TWO_WEEKS_LOW': 220.5, 'SECURITY_STOCK_ID': 'ADBL_2024-07-09'}, {'SECURITY_ID': 'AHL', 'MARKET_CAPITALIZATION': 1772.42, 'FIFTY_TWO_WEEKS_HIGH': 550.0, 'FIFTY_TWO_WEEKS_LOW': 273.1, 'SECURITY_STOCK_ID': 'AHL_2024-07-09'}, {'SECURITY_ID': 'AHPC', 'MARKET_CAPITALIZATION': 5783.21, 'FIFTY_TWO_WEEKS_HIGH': 304.0, 'FIFTY_TWO_WEEKS_LOW': 149.0, 'SECURITY_STOCK_ID': 'AHPC_2024-07-09'}, {'SECURITY_ID': 'AKJCL', 'MARKET_CAPITALIZATION': 1768.0, 'FIFTY_TWO_WEEKS_HIGH': 250.0, 'FIFTY_TWO_WEEKS_LOW': 141.3, 'SECURITY_STOCK_ID': 'AKJCL_2024-07-09'}, {'SECURITY_ID': 'AKPL', 'MARKET_CAPITALIZATION': 6389.35, 'FIFTY_TWO_WEEKS_HIGH': 254.0, 'FIFTY_TWO_WEEKS_LOW': 152.4, 'SECURITY_STOCK_ID': 'AKPL_2024-07-09'}, {'SECURITY_ID': 'ALBSL', 'MARKET_CAPITALIZATION': 6865.29, 'FIFTY_TWO_WEEKS_HIGH': 1097.0, 'FIFTY_TWO_WEEKS_LOW': 543.0, 'SECURITY_STOCK_ID': 'ALBSL_2024-07-09'}, {'SECURITY_ID': 'ALICL', 'MARKET_CAPITALIZATION': 20059.03, 'FIFTY_TWO_WEEKS_HIGH': 785.0, 'FIFTY_TWO_WEEKS_LOW': 523.0, 'SECURITY_STOCK_ID': 'ALICL_2024-07-09'}, {'SECURITY_ID': 'ANLB', 'MARKET_CAPITALIZATION': 1823.74, 'FIFTY_TWO_WEEKS_HIGH': 2659.6, 'FIFTY_TWO_WEEKS_LOW': 1550.0, 'SECURITY_STOCK_ID': 'ANLB_2024-07-09'}  ... displaying 10 of 315 total bound parameter sets ...  {'SECURITY_ID': 'VLUCL', 'MARKET_CAPITALIZATION': 9811.13, 'FIFTY_TWO_WEEKS_HIGH': 608.0, 'FIFTY_TWO_WEEKS_LOW': 365.3, 'SECURITY_STOCK_ID': 'VLUCL_2024-07-09'}, {'SECURITY_ID': 'WNLB', 'MARKET_CAPITALIZATION': 1205.6, 'FIFTY_TWO_WEEKS_HIGH': 1679.0, 'FIFTY_TWO_WEEKS_LOW': 680.0, 'SECURITY_STOCK_ID': 'WNLB_2024-07-09'})]
+(Background on this error at: https://sqlalche.me/e/14/f405)
+[2024-07-10T09:05:14.188+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=market_etl, task_id=load_data_to_postgres, run_id=manual__2024-07-10T08:55:25.813716+00:00, execution_date=20240710T085525, start_date=20240710T090513, end_date=20240710T090514
+[2024-07-10T09:05:14.206+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 270 for task load_data_to_postgres ((psycopg2.errors.UndefinedColumn) column "SECURITY_STOCK_ID" of relation "security_dimension" does not exist
+LINE 1: ...", "FIFTY_TWO_WEEKS_HIGH", "FIFTY_TWO_WEEKS_LOW", "SECURITY_...
+                                                             ^
+
+[SQL: INSERT INTO security_dimension ("SECURITY_ID", "MARKET_CAPITALIZATION", "FIFTY_TWO_WEEKS_HIGH", "FIFTY_TWO_WEEKS_LOW", "SECURITY_STOCK_ID") VALUES (%(SECURITY_ID)s, %(MARKET_CAPITALIZATION)s, %(FIFTY_TWO_WEEKS_HIGH)s, %(FIFTY_TWO_WEEKS_LOW)s, %(SECURITY_STOCK_ID)s)]
+[parameters: ({'SECURITY_ID': 'ADBL', 'MARKET_CAPITALIZATION': 38364.17, 'FIFTY_TWO_WEEKS_HIGH': 292.9, 'FIFTY_TWO_WEEKS_LOW': 220.5, 'SECURITY_STOCK_ID': 'ADBL_2024-07-09'}, {'SECURITY_ID': 'AHL', 'MARKET_CAPITALIZATION': 1772.42, 'FIFTY_TWO_WEEKS_HIGH': 550.0, 'FIFTY_TWO_WEEKS_LOW': 273.1, 'SECURITY_STOCK_ID': 'AHL_2024-07-09'}, {'SECURITY_ID': 'AHPC', 'MARKET_CAPITALIZATION': 5783.21, 'FIFTY_TWO_WEEKS_HIGH': 304.0, 'FIFTY_TWO_WEEKS_LOW': 149.0, 'SECURITY_STOCK_ID': 'AHPC_2024-07-09'}, {'SECURITY_ID': 'AKJCL', 'MARKET_CAPITALIZATION': 1768.0, 'FIFTY_TWO_WEEKS_HIGH': 250.0, 'FIFTY_TWO_WEEKS_LOW': 141.3, 'SECURITY_STOCK_ID': 'AKJCL_2024-07-09'}, {'SECURITY_ID': 'AKPL', 'MARKET_CAPITALIZATION': 6389.35, 'FIFTY_TWO_WEEKS_HIGH': 254.0, 'FIFTY_TWO_WEEKS_LOW': 152.4, 'SECURITY_STOCK_ID': 'AKPL_2024-07-09'}, {'SECURITY_ID': 'ALBSL', 'MARKET_CAPITALIZATION': 6865.29, 'FIFTY_TWO_WEEKS_HIGH': 1097.0, 'FIFTY_TWO_WEEKS_LOW': 543.0, 'SECURITY_STOCK_ID': 'ALBSL_2024-07-09'}, {'SECURITY_ID': 'ALICL', 'MARKET_CAPITALIZATION': 20059.03, 'FIFTY_TWO_WEEKS_HIGH': 785.0, 'FIFTY_TWO_WEEKS_LOW': 523.0, 'SECURITY_STOCK_ID': 'ALICL_2024-07-09'}, {'SECURITY_ID': 'ANLB', 'MARKET_CAPITALIZATION': 1823.74, 'FIFTY_TWO_WEEKS_HIGH': 2659.6, 'FIFTY_TWO_WEEKS_LOW': 1550.0, 'SECURITY_STOCK_ID': 'ANLB_2024-07-09'}  ... displaying 10 of 315 total bound parameter sets ...  {'SECURITY_ID': 'VLUCL', 'MARKET_CAPITALIZATION': 9811.13, 'FIFTY_TWO_WEEKS_HIGH': 608.0, 'FIFTY_TWO_WEEKS_LOW': 365.3, 'SECURITY_STOCK_ID': 'VLUCL_2024-07-09'}, {'SECURITY_ID': 'WNLB', 'MARKET_CAPITALIZATION': 1205.6, 'FIFTY_TWO_WEEKS_HIGH': 1679.0, 'FIFTY_TWO_WEEKS_LOW': 680.0, 'SECURITY_STOCK_ID': 'WNLB_2024-07-09'})]
+(Background on this error at: https://sqlalche.me/e/14/f405); 218)
+[2024-07-10T09:05:14.253+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-07-10T09:05:14.278+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-10T09:05:14.280+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

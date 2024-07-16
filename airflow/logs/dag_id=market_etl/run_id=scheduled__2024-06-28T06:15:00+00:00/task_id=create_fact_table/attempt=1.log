@@ -1,0 +1,204 @@
+[2024-07-10T09:14:19.716+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-10T09:14:19.744+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.create_fact_table scheduled__2024-06-28T06:15:00+00:00 [queued]>
+[2024-07-10T09:14:19.753+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.create_fact_table scheduled__2024-06-28T06:15:00+00:00 [queued]>
+[2024-07-10T09:14:19.753+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-10T09:14:19.763+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): create_fact_table> on 2024-06-28 06:15:00+00:00
+[2024-07-10T09:14:19.810+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=395) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-10T09:14:19.816+0000] {standard_task_runner.py:63} INFO - Started process 406 to run task
+[2024-07-10T09:14:19.822+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'create_fact_table', 'scheduled__2024-06-28T06:15:00+00:00', '--job-id', '320', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpg9jy90rj']
+[2024-07-10T09:14:19.830+0000] {standard_task_runner.py:91} INFO - Job 320: Subtask create_fact_table
+[2024-07-10T09:14:19.968+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.create_fact_table scheduled__2024-06-28T06:15:00+00:00 [running]> on host 514b016b59c3
+[2024-07-10T09:14:20.359+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='create_fact_table' AIRFLOW_CTX_EXECUTION_DATE='2024-06-28T06:15:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-28T06:15:00+00:00'
+[2024-07-10T09:14:20.365+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-10T09:14:20.379+0000] {python.py:237} INFO - Done. Returned value was:     SECURITY_ID BUSINESS_DATE  ...  AVERAGE_TRADED_PRICE          STOCK_ID
+0          ADBL    2024-07-09  ...                285.25   ADBL_2024-07-09
+1           AHL    2024-07-09  ...                518.39    AHL_2024-07-09
+2          AHPC    2024-07-09  ...                154.33   AHPC_2024-07-09
+3         AKJCL    2024-07-09  ...                221.13  AKJCL_2024-07-09
+4          AKPL    2024-07-09  ...                163.25   AKPL_2024-07-09
+..          ...           ...  ...                   ...               ...
+310        USHL    2024-07-09  ...                580.62   USHL_2024-07-09
+311        USLB    2024-07-09  ...               1748.07   USLB_2024-07-09
+312        VLBS    2024-07-09  ...               1044.35   VLBS_2024-07-09
+313       VLUCL    2024-07-09  ...                511.52  VLUCL_2024-07-09
+314        WNLB    2024-07-09  ...               1511.85   WNLB_2024-07-09
+
+[315 rows x 8 columns]
+[2024-07-10T09:14:20.391+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-10T09:14:20.465+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=create_fact_table, run_id=scheduled__2024-06-28T06:15:00+00:00, execution_date=20240628T061500, start_date=20240710T091419, end_date=20240710T091420
+[2024-07-10T09:14:20.500+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-10T09:14:20.534+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-10T09:23:24.258+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-10T09:23:24.280+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.create_fact_table scheduled__2024-06-28T06:15:00+00:00 [queued]>
+[2024-07-10T09:23:24.297+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.create_fact_table scheduled__2024-06-28T06:15:00+00:00 [queued]>
+[2024-07-10T09:23:24.298+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-10T09:23:24.309+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): create_fact_table> on 2024-06-28 06:15:00+00:00
+[2024-07-10T09:23:24.315+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=403) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-10T09:23:24.316+0000] {standard_task_runner.py:63} INFO - Started process 410 to run task
+[2024-07-10T09:23:24.317+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'create_fact_table', 'scheduled__2024-06-28T06:15:00+00:00', '--job-id', '442', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpgf7db3h2']
+[2024-07-10T09:23:24.320+0000] {standard_task_runner.py:91} INFO - Job 442: Subtask create_fact_table
+[2024-07-10T09:23:24.393+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.create_fact_table scheduled__2024-06-28T06:15:00+00:00 [running]> on host 514b016b59c3
+[2024-07-10T09:23:24.695+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='create_fact_table' AIRFLOW_CTX_EXECUTION_DATE='2024-06-28T06:15:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-28T06:15:00+00:00'
+[2024-07-10T09:23:24.696+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-10T09:23:24.704+0000] {python.py:237} INFO - Done. Returned value was:     SECURITY_ID BUSINESS_DATE  ...          STOCK_ID                   PRICE_ID
+0          ADBL    2024-07-09  ...   ADBL_2024-07-09   ADBL_2024-07-09 00:00:00
+1           AHL    2024-07-09  ...    AHL_2024-07-09    AHL_2024-07-09 00:00:00
+2          AHPC    2024-07-09  ...   AHPC_2024-07-09   AHPC_2024-07-09 00:00:00
+3         AKJCL    2024-07-09  ...  AKJCL_2024-07-09  AKJCL_2024-07-09 00:00:00
+4          AKPL    2024-07-09  ...   AKPL_2024-07-09   AKPL_2024-07-09 00:00:00
+..          ...           ...  ...               ...                        ...
+310        USHL    2024-07-09  ...   USHL_2024-07-09   USHL_2024-07-09 00:00:00
+311        USLB    2024-07-09  ...   USLB_2024-07-09   USLB_2024-07-09 00:00:00
+312        VLBS    2024-07-09  ...   VLBS_2024-07-09   VLBS_2024-07-09 00:00:00
+313       VLUCL    2024-07-09  ...  VLUCL_2024-07-09  VLUCL_2024-07-09 00:00:00
+314        WNLB    2024-07-09  ...   WNLB_2024-07-09   WNLB_2024-07-09 00:00:00
+
+[315 rows x 9 columns]
+[2024-07-10T09:23:24.714+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-10T09:23:24.758+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=create_fact_table, run_id=scheduled__2024-06-28T06:15:00+00:00, execution_date=20240628T061500, start_date=20240710T092324, end_date=20240710T092324
+[2024-07-10T09:23:24.785+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-10T09:23:24.825+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-10T09:23:24.827+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-10T09:53:07.708+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-10T09:53:07.747+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.create_fact_table scheduled__2024-06-28T06:15:00+00:00 [queued]>
+[2024-07-10T09:53:07.752+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.create_fact_table scheduled__2024-06-28T06:15:00+00:00 [queued]>
+[2024-07-10T09:53:07.753+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-10T09:53:07.763+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): create_fact_table> on 2024-06-28 06:15:00+00:00
+[2024-07-10T09:53:07.793+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=395) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-10T09:53:07.796+0000] {standard_task_runner.py:63} INFO - Started process 401 to run task
+[2024-07-10T09:53:07.800+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'create_fact_table', 'scheduled__2024-06-28T06:15:00+00:00', '--job-id', '566', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmp9_kuq1b0']
+[2024-07-10T09:53:07.806+0000] {standard_task_runner.py:91} INFO - Job 566: Subtask create_fact_table
+[2024-07-10T09:53:07.875+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.create_fact_table scheduled__2024-06-28T06:15:00+00:00 [running]> on host 514b016b59c3
+[2024-07-10T09:53:08.172+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='create_fact_table' AIRFLOW_CTX_EXECUTION_DATE='2024-06-28T06:15:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-28T06:15:00+00:00'
+[2024-07-10T09:53:08.173+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-10T09:53:08.185+0000] {python.py:237} INFO - Done. Returned value was:     SECURITY_ID BUSINESS_DATE  ...          STOCK_ID          PRICE_ID
+0          ADBL    2024-07-09  ...   ADBL_2024-07-09   ADBL_2024-07-09
+1           AHL    2024-07-09  ...    AHL_2024-07-09    AHL_2024-07-09
+2          AHPC    2024-07-09  ...   AHPC_2024-07-09   AHPC_2024-07-09
+3         AKJCL    2024-07-09  ...  AKJCL_2024-07-09  AKJCL_2024-07-09
+4          AKPL    2024-07-09  ...   AKPL_2024-07-09   AKPL_2024-07-09
+..          ...           ...  ...               ...               ...
+310        USHL    2024-07-09  ...   USHL_2024-07-09   USHL_2024-07-09
+311        USLB    2024-07-09  ...   USLB_2024-07-09   USLB_2024-07-09
+312        VLBS    2024-07-09  ...   VLBS_2024-07-09   VLBS_2024-07-09
+313       VLUCL    2024-07-09  ...  VLUCL_2024-07-09  VLUCL_2024-07-09
+314        WNLB    2024-07-09  ...   WNLB_2024-07-09   WNLB_2024-07-09
+
+[315 rows x 9 columns]
+[2024-07-10T09:53:08.193+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-10T09:53:08.432+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=create_fact_table, run_id=scheduled__2024-06-28T06:15:00+00:00, execution_date=20240628T061500, start_date=20240710T095307, end_date=20240710T095308
+[2024-07-10T09:53:08.482+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-10T09:53:08.550+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-10T09:53:08.551+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-10T10:03:05.084+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-10T10:03:05.098+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.create_fact_table scheduled__2024-06-28T06:15:00+00:00 [queued]>
+[2024-07-10T10:03:05.108+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.create_fact_table scheduled__2024-06-28T06:15:00+00:00 [queued]>
+[2024-07-10T10:03:05.110+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-10T10:03:05.131+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): create_fact_table> on 2024-06-28 06:15:00+00:00
+[2024-07-10T10:03:05.138+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=401) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-10T10:03:05.140+0000] {standard_task_runner.py:63} INFO - Started process 408 to run task
+[2024-07-10T10:03:05.141+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'create_fact_table', 'scheduled__2024-06-28T06:15:00+00:00', '--job-id', '653', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmp0ao35wwz']
+[2024-07-10T10:03:05.143+0000] {standard_task_runner.py:91} INFO - Job 653: Subtask create_fact_table
+[2024-07-10T10:03:05.202+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.create_fact_table scheduled__2024-06-28T06:15:00+00:00 [running]> on host 514b016b59c3
+[2024-07-10T10:03:05.433+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='create_fact_table' AIRFLOW_CTX_EXECUTION_DATE='2024-06-28T06:15:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-28T06:15:00+00:00'
+[2024-07-10T10:03:05.435+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-10T10:03:05.444+0000] {python.py:237} INFO - Done. Returned value was:     SECURITY_ID  ...                                           PRICE_ID
+0          ADBL  ...  ADBL_<bound method Timestamp.date of Timestamp...
+1           AHL  ...  AHL_<bound method Timestamp.date of Timestamp(...
+2          AHPC  ...  AHPC_<bound method Timestamp.date of Timestamp...
+3         AKJCL  ...  AKJCL_<bound method Timestamp.date of Timestam...
+4          AKPL  ...  AKPL_<bound method Timestamp.date of Timestamp...
+..          ...  ...                                                ...
+310        USHL  ...  USHL_<bound method Timestamp.date of Timestamp...
+311        USLB  ...  USLB_<bound method Timestamp.date of Timestamp...
+312        VLBS  ...  VLBS_<bound method Timestamp.date of Timestamp...
+313       VLUCL  ...  VLUCL_<bound method Timestamp.date of Timestam...
+314        WNLB  ...  WNLB_<bound method Timestamp.date of Timestamp...
+
+[315 rows x 9 columns]
+[2024-07-10T10:03:05.452+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-10T10:03:05.483+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=create_fact_table, run_id=scheduled__2024-06-28T06:15:00+00:00, execution_date=20240628T061500, start_date=20240710T100305, end_date=20240710T100305
+[2024-07-10T10:03:05.527+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-10T10:03:05.544+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-10T11:18:32.274+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-10T11:18:32.311+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.create_fact_table scheduled__2024-06-28T06:15:00+00:00 [queued]>
+[2024-07-10T11:18:32.327+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.create_fact_table scheduled__2024-06-28T06:15:00+00:00 [queued]>
+[2024-07-10T11:18:32.328+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-10T11:18:32.377+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): create_fact_table> on 2024-06-28 06:15:00+00:00
+[2024-07-10T11:18:32.395+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=434) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-10T11:18:32.398+0000] {standard_task_runner.py:63} INFO - Started process 440 to run task
+[2024-07-10T11:18:32.400+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'create_fact_table', 'scheduled__2024-06-28T06:15:00+00:00', '--job-id', '718', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpzm8zi51k']
+[2024-07-10T11:18:32.406+0000] {standard_task_runner.py:91} INFO - Job 718: Subtask create_fact_table
+[2024-07-10T11:18:32.532+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.create_fact_table scheduled__2024-06-28T06:15:00+00:00 [running]> on host 514b016b59c3
+[2024-07-10T11:18:32.982+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='create_fact_table' AIRFLOW_CTX_EXECUTION_DATE='2024-06-28T06:15:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-28T06:15:00+00:00'
+[2024-07-10T11:18:32.985+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-10T11:18:33.013+0000] {python.py:237} INFO - Done. Returned value was:     SECURITY_ID  ...                                           PRICE_ID
+0          ADBL  ...  ADBL_<bound method Timestamp.date of Timestamp...
+1           AHL  ...  AHL_<bound method Timestamp.date of Timestamp(...
+2          AHPC  ...  AHPC_<bound method Timestamp.date of Timestamp...
+3         AKJCL  ...  AKJCL_<bound method Timestamp.date of Timestam...
+4          AKPL  ...  AKPL_<bound method Timestamp.date of Timestamp...
+..          ...  ...                                                ...
+310        USHL  ...  USHL_<bound method Timestamp.date of Timestamp...
+311        USLB  ...  USLB_<bound method Timestamp.date of Timestamp...
+312        VLBS  ...  VLBS_<bound method Timestamp.date of Timestamp...
+313       VLUCL  ...  VLUCL_<bound method Timestamp.date of Timestam...
+314        WNLB  ...  WNLB_<bound method Timestamp.date of Timestamp...
+
+[315 rows x 9 columns]
+[2024-07-10T11:18:33.045+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-10T11:18:33.126+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=create_fact_table, run_id=scheduled__2024-06-28T06:15:00+00:00, execution_date=20240628T061500, start_date=20240710T111832, end_date=20240710T111833
+[2024-07-10T11:18:33.206+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-10T11:18:33.270+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-10T11:18:33.277+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-11T08:17:21.381+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-11T08:17:21.398+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.create_fact_table scheduled__2024-06-28T06:15:00+00:00 [queued]>
+[2024-07-11T08:17:21.416+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.create_fact_table scheduled__2024-06-28T06:15:00+00:00 [queued]>
+[2024-07-11T08:17:21.417+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-11T08:17:21.428+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): create_fact_table> on 2024-06-28 06:15:00+00:00
+[2024-07-11T08:17:21.433+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=62) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-11T08:17:21.434+0000] {standard_task_runner.py:63} INFO - Started process 68 to run task
+[2024-07-11T08:17:21.435+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'create_fact_table', 'scheduled__2024-06-28T06:15:00+00:00', '--job-id', '1090', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpp0jm60v6']
+[2024-07-11T08:17:21.436+0000] {standard_task_runner.py:91} INFO - Job 1090: Subtask create_fact_table
+[2024-07-11T08:17:21.532+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.create_fact_table scheduled__2024-06-28T06:15:00+00:00 [running]> on host aa283b53dd54
+[2024-07-11T08:17:21.788+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='create_fact_table' AIRFLOW_CTX_EXECUTION_DATE='2024-06-28T06:15:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-28T06:15:00+00:00'
+[2024-07-11T08:17:21.789+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-11T08:17:21.793+0000] {python.py:237} INFO - Done. Returned value was:    SECURITY_ID BUSINESS_DATE  ...            STOCK_ID            PRICE_ID
+0         ADBL    2024-07-10  ...     ADBL_2024-07-10     ADBL_2024-07-10
+1      ADBLD83    2024-07-10  ...  ADBLD83_2024-07-10  ADBLD83_2024-07-10
+2          AHL    2024-07-10  ...      AHL_2024-07-10      AHL_2024-07-10
+3         AHPC    2024-07-10  ...     AHPC_2024-07-10     AHPC_2024-07-10
+4        AKJCL    2024-07-10  ...    AKJCL_2024-07-10    AKJCL_2024-07-10
+5         AKPL    2024-07-10  ...     AKPL_2024-07-10     AKPL_2024-07-10
+6        ALBSL    2024-07-10  ...    ALBSL_2024-07-10    ALBSL_2024-07-10
+7        ALICL    2024-07-10  ...    ALICL_2024-07-10    ALICL_2024-07-10
+8         ANLB    2024-07-10  ...     ANLB_2024-07-10     ANLB_2024-07-10
+9          API    2024-07-10  ...      API_2024-07-10      API_2024-07-10
+10       AVYAN    2024-07-10  ...    AVYAN_2024-07-10    AVYAN_2024-07-10
+11       BARUN    2024-07-10  ...    BARUN_2024-07-10    BARUN_2024-07-10
+12         BBC    2024-07-10  ...      BBC_2024-07-10      BBC_2024-07-10
+13        BEDC    2024-07-10  ...     BEDC_2024-07-10     BEDC_2024-07-10
+14         BFC    2024-07-10  ...      BFC_2024-07-10      BFC_2024-07-10
+15        BGWT    2024-07-10  ...     BGWT_2024-07-10     BGWT_2024-07-10
+16        BHDC    2024-07-10  ...     BHDC_2024-07-10     BHDC_2024-07-10
+17         BHL    2024-07-10  ...      BHL_2024-07-10      BHL_2024-07-10
+18        BHPL    2024-07-10  ...     BHPL_2024-07-10     BHPL_2024-07-10
+
+[19 rows x 9 columns]
+[2024-07-11T08:17:21.802+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-11T08:17:21.866+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=create_fact_table, run_id=scheduled__2024-06-28T06:15:00+00:00, execution_date=20240628T061500, start_date=20240711T081721, end_date=20240711T081721
+[2024-07-11T08:17:21.909+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-11T08:17:21.943+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-11T08:17:21.944+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

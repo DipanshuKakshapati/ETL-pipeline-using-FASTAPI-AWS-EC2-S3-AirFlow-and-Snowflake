@@ -1,0 +1,99 @@
+[2024-07-10T09:15:16.196+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-10T09:15:16.241+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.get_business_date scheduled__2024-06-30T06:15:00+00:00 [queued]>
+[2024-07-10T09:15:16.255+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.get_business_date scheduled__2024-06-30T06:15:00+00:00 [queued]>
+[2024-07-10T09:15:16.256+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-10T09:15:16.292+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): get_business_date> on 2024-06-30 06:15:00+00:00
+[2024-07-10T09:15:16.304+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=566) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-10T09:15:16.307+0000] {standard_task_runner.py:63} INFO - Started process 576 to run task
+[2024-07-10T09:15:16.311+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'get_business_date', 'scheduled__2024-06-30T06:15:00+00:00', '--job-id', '336', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpz8gavchr']
+[2024-07-10T09:15:16.323+0000] {standard_task_runner.py:91} INFO - Job 336: Subtask get_business_date
+[2024-07-10T09:15:16.447+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.get_business_date scheduled__2024-06-30T06:15:00+00:00 [running]> on host 514b016b59c3
+[2024-07-10T09:15:16.827+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='get_business_date' AIRFLOW_CTX_EXECUTION_DATE='2024-06-30T06:15:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-30T06:15:00+00:00'
+[2024-07-10T09:15:16.830+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-10T09:15:16.832+0000] {python.py:237} INFO - Done. Returned value was: 2024-07-09
+[2024-07-10T09:15:16.833+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-10T09:15:16.880+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=get_business_date, run_id=scheduled__2024-06-30T06:15:00+00:00, execution_date=20240630T061500, start_date=20240710T091516, end_date=20240710T091516
+[2024-07-10T09:15:16.955+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-10T09:15:17.045+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-07-10T09:15:17.047+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-10T09:24:12.883+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-10T09:24:12.905+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.get_business_date scheduled__2024-06-30T06:15:00+00:00 [queued]>
+[2024-07-10T09:24:12.913+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.get_business_date scheduled__2024-06-30T06:15:00+00:00 [queued]>
+[2024-07-10T09:24:12.914+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-10T09:24:12.927+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): get_business_date> on 2024-06-30 06:15:00+00:00
+[2024-07-10T09:24:12.953+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=564) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-10T09:24:12.956+0000] {standard_task_runner.py:63} INFO - Started process 574 to run task
+[2024-07-10T09:24:12.959+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'get_business_date', 'scheduled__2024-06-30T06:15:00+00:00', '--job-id', '459', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpg30zpg9j']
+[2024-07-10T09:24:12.969+0000] {standard_task_runner.py:91} INFO - Job 459: Subtask get_business_date
+[2024-07-10T09:24:13.218+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.get_business_date scheduled__2024-06-30T06:15:00+00:00 [running]> on host 514b016b59c3
+[2024-07-10T09:24:13.546+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='get_business_date' AIRFLOW_CTX_EXECUTION_DATE='2024-06-30T06:15:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-30T06:15:00+00:00'
+[2024-07-10T09:24:13.548+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-10T09:24:13.550+0000] {python.py:237} INFO - Done. Returned value was: 2024-07-09
+[2024-07-10T09:24:13.551+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-10T09:24:13.600+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=get_business_date, run_id=scheduled__2024-06-30T06:15:00+00:00, execution_date=20240630T061500, start_date=20240710T092412, end_date=20240710T092413
+[2024-07-10T09:24:13.640+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-10T09:24:13.694+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-07-10T09:24:13.696+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-10T09:53:57.418+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-10T09:53:57.434+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.get_business_date scheduled__2024-06-30T06:15:00+00:00 [queued]>
+[2024-07-10T09:53:57.441+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.get_business_date scheduled__2024-06-30T06:15:00+00:00 [queued]>
+[2024-07-10T09:53:57.441+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-10T09:53:57.451+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): get_business_date> on 2024-06-30 06:15:00+00:00
+[2024-07-10T09:53:57.474+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=559) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-10T09:53:57.479+0000] {standard_task_runner.py:63} INFO - Started process 563 to run task
+[2024-07-10T09:53:57.478+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'get_business_date', 'scheduled__2024-06-30T06:15:00+00:00', '--job-id', '583', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpcdry4hsh']
+[2024-07-10T09:53:57.481+0000] {standard_task_runner.py:91} INFO - Job 583: Subtask get_business_date
+[2024-07-10T09:53:57.564+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.get_business_date scheduled__2024-06-30T06:15:00+00:00 [running]> on host 514b016b59c3
+[2024-07-10T09:53:57.880+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='get_business_date' AIRFLOW_CTX_EXECUTION_DATE='2024-06-30T06:15:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-30T06:15:00+00:00'
+[2024-07-10T09:53:57.882+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-10T09:53:57.883+0000] {python.py:237} INFO - Done. Returned value was: 2024-07-09
+[2024-07-10T09:53:57.884+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-10T09:53:57.923+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=get_business_date, run_id=scheduled__2024-06-30T06:15:00+00:00, execution_date=20240630T061500, start_date=20240710T095357, end_date=20240710T095357
+[2024-07-10T09:53:57.990+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-10T09:53:58.037+0000] {taskinstance.py:3503} INFO - 2 downstream tasks scheduled from follow-on schedule check
+[2024-07-10T09:53:58.038+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-10T11:36:00.898+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-10T11:36:00.943+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.get_business_date scheduled__2024-06-30T06:15:00+00:00 [queued]>
+[2024-07-10T11:36:00.957+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.get_business_date scheduled__2024-06-30T06:15:00+00:00 [queued]>
+[2024-07-10T11:36:00.958+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-10T11:36:00.977+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): get_business_date> on 2024-06-30 06:15:00+00:00
+[2024-07-10T11:36:00.993+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=679) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-10T11:36:00.998+0000] {standard_task_runner.py:63} INFO - Started process 683 to run task
+[2024-07-10T11:36:01.007+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'get_business_date', 'scheduled__2024-06-30T06:15:00+00:00', '--job-id', '737', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpy0nzdog1']
+[2024-07-10T11:36:01.013+0000] {standard_task_runner.py:91} INFO - Job 737: Subtask get_business_date
+[2024-07-10T11:36:01.262+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.get_business_date scheduled__2024-06-30T06:15:00+00:00 [running]> on host 514b016b59c3
+[2024-07-10T11:36:01.735+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='get_business_date' AIRFLOW_CTX_EXECUTION_DATE='2024-06-30T06:15:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-30T06:15:00+00:00'
+[2024-07-10T11:36:01.738+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-10T11:36:01.740+0000] {python.py:237} INFO - Done. Returned value was: 2024-07-09
+[2024-07-10T11:36:01.741+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-10T11:36:01.801+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=get_business_date, run_id=scheduled__2024-06-30T06:15:00+00:00, execution_date=20240630T061500, start_date=20240710T113600, end_date=20240710T113601
+[2024-07-10T11:36:01.881+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-10T11:36:01.933+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-11T08:18:57.647+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-11T08:18:57.663+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.get_business_date scheduled__2024-06-30T06:15:00+00:00 [queued]>
+[2024-07-11T08:18:57.669+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.get_business_date scheduled__2024-06-30T06:15:00+00:00 [queued]>
+[2024-07-11T08:18:57.670+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-11T08:18:57.678+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): get_business_date> on 2024-06-30 06:15:00+00:00
+[2024-07-11T08:18:57.684+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=476) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-11T08:18:57.685+0000] {standard_task_runner.py:63} INFO - Started process 491 to run task
+[2024-07-11T08:18:57.686+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'get_business_date', 'scheduled__2024-06-30T06:15:00+00:00', '--job-id', '1126', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpx21calo5']
+[2024-07-11T08:18:57.688+0000] {standard_task_runner.py:91} INFO - Job 1126: Subtask get_business_date
+[2024-07-11T08:18:57.759+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.get_business_date scheduled__2024-06-30T06:15:00+00:00 [running]> on host aa283b53dd54
+[2024-07-11T08:18:57.930+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='get_business_date' AIRFLOW_CTX_EXECUTION_DATE='2024-06-30T06:15:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-30T06:15:00+00:00'
+[2024-07-11T08:18:57.931+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-11T08:18:57.932+0000] {python.py:237} INFO - Done. Returned value was: 2024-07-10
+[2024-07-11T08:18:57.932+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-11T08:18:57.952+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=get_business_date, run_id=scheduled__2024-06-30T06:15:00+00:00, execution_date=20240630T061500, start_date=20240711T081857, end_date=20240711T081857
+[2024-07-11T08:18:57.989+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-11T08:18:58.014+0000] {taskinstance.py:3503} INFO - 2 downstream tasks scheduled from follow-on schedule check
+[2024-07-11T08:18:58.015+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

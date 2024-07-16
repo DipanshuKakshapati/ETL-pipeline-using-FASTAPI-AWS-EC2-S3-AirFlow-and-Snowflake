@@ -1,0 +1,19 @@
+[2024-07-11T07:41:58.918+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-11T07:41:58.932+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.get_business_date manual__2024-07-11T07:33:39.753435+00:00 [queued]>
+[2024-07-11T07:41:58.937+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.get_business_date manual__2024-07-11T07:33:39.753435+00:00 [queued]>
+[2024-07-11T07:41:58.938+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-11T07:41:58.947+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): get_business_date> on 2024-07-11 07:33:39.753435+00:00
+[2024-07-11T07:41:58.974+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=350) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-11T07:41:58.976+0000] {standard_task_runner.py:63} INFO - Started process 358 to run task
+[2024-07-11T07:41:58.978+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'get_business_date', 'manual__2024-07-11T07:33:39.753435+00:00', '--job-id', '1015', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpm2m6f57f']
+[2024-07-11T07:41:58.980+0000] {standard_task_runner.py:91} INFO - Job 1015: Subtask get_business_date
+[2024-07-11T07:41:59.046+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.get_business_date manual__2024-07-11T07:33:39.753435+00:00 [running]> on host aa283b53dd54
+[2024-07-11T07:41:59.276+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='get_business_date' AIRFLOW_CTX_EXECUTION_DATE='2024-07-11T07:33:39.753435+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-07-11T07:33:39.753435+00:00'
+[2024-07-11T07:41:59.278+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-11T07:41:59.279+0000] {python.py:237} INFO - Done. Returned value was: 2024-07-10
+[2024-07-11T07:41:59.279+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-11T07:41:59.316+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=get_business_date, run_id=manual__2024-07-11T07:33:39.753435+00:00, execution_date=20240711T073339, start_date=20240711T074158, end_date=20240711T074159
+[2024-07-11T07:41:59.366+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-11T07:41:59.383+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

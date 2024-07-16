@@ -1,0 +1,105 @@
+[2024-07-10T09:15:19.871+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-10T09:15:19.886+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.load_data_to_postgres scheduled__2024-06-30T06:15:00+00:00 [queued]>
+[2024-07-10T09:15:19.892+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.load_data_to_postgres scheduled__2024-06-30T06:15:00+00:00 [queued]>
+[2024-07-10T09:15:19.892+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-10T09:15:19.900+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): load_data_to_postgres> on 2024-06-30 06:15:00+00:00
+[2024-07-10T09:15:19.906+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=625) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-10T09:15:19.907+0000] {standard_task_runner.py:63} INFO - Started process 627 to run task
+[2024-07-10T09:15:19.908+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'load_data_to_postgres', 'scheduled__2024-06-30T06:15:00+00:00', '--job-id', '338', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpgqa3ez38']
+[2024-07-10T09:15:19.909+0000] {standard_task_runner.py:91} INFO - Job 338: Subtask load_data_to_postgres
+[2024-07-10T09:15:19.977+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.load_data_to_postgres scheduled__2024-06-30T06:15:00+00:00 [running]> on host 514b016b59c3
+[2024-07-10T09:15:20.254+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='load_data_to_postgres' AIRFLOW_CTX_EXECUTION_DATE='2024-06-30T06:15:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-30T06:15:00+00:00'
+[2024-07-10T09:15:20.255+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-10T09:15:20.265+0000] {base.py:84} INFO - Using connection ID 'market_database_conn' for task execution.
+[2024-07-10T09:15:20.330+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-07-10T09:15:20.330+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-10T09:15:20.341+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=load_data_to_postgres, run_id=scheduled__2024-06-30T06:15:00+00:00, execution_date=20240630T061500, start_date=20240710T091519, end_date=20240710T091520
+[2024-07-10T09:15:20.386+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-10T09:15:20.417+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-10T09:15:20.419+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-10T09:24:18.132+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-10T09:24:18.147+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.load_data_to_postgres scheduled__2024-06-30T06:15:00+00:00 [queued]>
+[2024-07-10T09:24:18.153+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.load_data_to_postgres scheduled__2024-06-30T06:15:00+00:00 [queued]>
+[2024-07-10T09:24:18.154+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-10T09:24:18.164+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): load_data_to_postgres> on 2024-06-30 06:15:00+00:00
+[2024-07-10T09:24:18.173+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=631) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-10T09:24:18.174+0000] {standard_task_runner.py:63} INFO - Started process 633 to run task
+[2024-07-10T09:24:18.175+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'load_data_to_postgres', 'scheduled__2024-06-30T06:15:00+00:00', '--job-id', '461', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpvq77hcn2']
+[2024-07-10T09:24:18.176+0000] {standard_task_runner.py:91} INFO - Job 461: Subtask load_data_to_postgres
+[2024-07-10T09:24:18.265+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.load_data_to_postgres scheduled__2024-06-30T06:15:00+00:00 [running]> on host 514b016b59c3
+[2024-07-10T09:24:18.531+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='load_data_to_postgres' AIRFLOW_CTX_EXECUTION_DATE='2024-06-30T06:15:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-30T06:15:00+00:00'
+[2024-07-10T09:24:18.532+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-10T09:24:18.546+0000] {base.py:84} INFO - Using connection ID 'market_database_conn' for task execution.
+[2024-07-10T09:24:18.641+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-07-10T09:24:18.642+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-10T09:24:18.654+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=load_data_to_postgres, run_id=scheduled__2024-06-30T06:15:00+00:00, execution_date=20240630T061500, start_date=20240710T092418, end_date=20240710T092418
+[2024-07-10T09:24:18.690+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-10T09:24:18.723+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-10T09:24:18.725+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-10T09:54:01.747+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-10T09:54:01.765+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.load_data_to_postgres scheduled__2024-06-30T06:15:00+00:00 [queued]>
+[2024-07-10T09:54:01.771+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.load_data_to_postgres scheduled__2024-06-30T06:15:00+00:00 [queued]>
+[2024-07-10T09:54:01.772+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-10T09:54:01.782+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): load_data_to_postgres> on 2024-06-30 06:15:00+00:00
+[2024-07-10T09:54:01.790+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=623) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-10T09:54:01.791+0000] {standard_task_runner.py:63} INFO - Started process 625 to run task
+[2024-07-10T09:54:01.795+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'load_data_to_postgres', 'scheduled__2024-06-30T06:15:00+00:00', '--job-id', '587', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpq_pdwjb9']
+[2024-07-10T09:54:01.801+0000] {standard_task_runner.py:91} INFO - Job 587: Subtask load_data_to_postgres
+[2024-07-10T09:54:01.859+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.load_data_to_postgres scheduled__2024-06-30T06:15:00+00:00 [running]> on host 514b016b59c3
+[2024-07-10T09:54:02.245+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='load_data_to_postgres' AIRFLOW_CTX_EXECUTION_DATE='2024-06-30T06:15:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-30T06:15:00+00:00'
+[2024-07-10T09:54:02.247+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-10T09:54:02.262+0000] {base.py:84} INFO - Using connection ID 'market_database_conn' for task execution.
+[2024-07-10T09:54:02.374+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-07-10T09:54:02.375+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-10T09:54:02.404+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=load_data_to_postgres, run_id=scheduled__2024-06-30T06:15:00+00:00, execution_date=20240630T061500, start_date=20240710T095401, end_date=20240710T095402
+[2024-07-10T09:54:02.431+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-10T09:54:02.462+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-10T09:54:02.465+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-10T11:36:08.165+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-10T11:36:08.181+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.load_data_to_postgres scheduled__2024-06-30T06:15:00+00:00 [queued]>
+[2024-07-10T11:36:08.189+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.load_data_to_postgres scheduled__2024-06-30T06:15:00+00:00 [queued]>
+[2024-07-10T11:36:08.189+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-10T11:36:08.199+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): load_data_to_postgres> on 2024-06-30 06:15:00+00:00
+[2024-07-10T11:36:08.206+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=737) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-10T11:36:08.207+0000] {standard_task_runner.py:63} INFO - Started process 739 to run task
+[2024-07-10T11:36:08.208+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'load_data_to_postgres', 'scheduled__2024-06-30T06:15:00+00:00', '--job-id', '741', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpxgivga4y']
+[2024-07-10T11:36:08.210+0000] {standard_task_runner.py:91} INFO - Job 741: Subtask load_data_to_postgres
+[2024-07-10T11:36:08.278+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.load_data_to_postgres scheduled__2024-06-30T06:15:00+00:00 [running]> on host 514b016b59c3
+[2024-07-10T11:36:08.530+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='load_data_to_postgres' AIRFLOW_CTX_EXECUTION_DATE='2024-06-30T06:15:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-30T06:15:00+00:00'
+[2024-07-10T11:36:08.531+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-10T11:36:08.542+0000] {base.py:84} INFO - Using connection ID 'market_database_conn' for task execution.
+[2024-07-10T11:36:08.618+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-07-10T11:36:08.619+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-10T11:36:08.630+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=load_data_to_postgres, run_id=scheduled__2024-06-30T06:15:00+00:00, execution_date=20240630T061500, start_date=20240710T113608, end_date=20240710T113608
+[2024-07-10T11:36:08.681+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-10T11:36:08.701+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-10T11:36:08.702+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-11T08:19:00.774+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-11T08:19:00.791+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.load_data_to_postgres scheduled__2024-06-30T06:15:00+00:00 [queued]>
+[2024-07-11T08:19:00.797+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.load_data_to_postgres scheduled__2024-06-30T06:15:00+00:00 [queued]>
+[2024-07-11T08:19:00.798+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-11T08:19:00.806+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): load_data_to_postgres> on 2024-06-30 06:15:00+00:00
+[2024-07-11T08:19:00.817+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=534) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-11T08:19:00.818+0000] {standard_task_runner.py:63} INFO - Started process 536 to run task
+[2024-07-11T08:19:00.819+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'load_data_to_postgres', 'scheduled__2024-06-30T06:15:00+00:00', '--job-id', '1129', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmplr60ogkg']
+[2024-07-11T08:19:00.821+0000] {standard_task_runner.py:91} INFO - Job 1129: Subtask load_data_to_postgres
+[2024-07-11T08:19:00.887+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.load_data_to_postgres scheduled__2024-06-30T06:15:00+00:00 [running]> on host aa283b53dd54
+[2024-07-11T08:19:01.106+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='load_data_to_postgres' AIRFLOW_CTX_EXECUTION_DATE='2024-06-30T06:15:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-30T06:15:00+00:00'
+[2024-07-11T08:19:01.107+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-11T08:19:01.117+0000] {base.py:84} INFO - Using connection ID 'market_database_conn' for task execution.
+[2024-07-11T08:19:01.211+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-07-11T08:19:01.211+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-11T08:19:01.223+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=load_data_to_postgres, run_id=scheduled__2024-06-30T06:15:00+00:00, execution_date=20240630T061500, start_date=20240711T081900, end_date=20240711T081901
+[2024-07-11T08:19:01.247+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-11T08:19:01.289+0000] {taskinstance.py:3503} INFO - 4 downstream tasks scheduled from follow-on schedule check
+[2024-07-11T08:19:01.290+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

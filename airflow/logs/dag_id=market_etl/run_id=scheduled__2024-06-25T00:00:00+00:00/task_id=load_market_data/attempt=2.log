@@ -1,0 +1,302 @@
+[2024-06-26T04:38:55.647+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-06-26T04:38:55.662+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.load_market_data scheduled__2024-06-25T00:00:00+00:00 [queued]>
+[2024-06-26T04:38:55.667+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.load_market_data scheduled__2024-06-25T00:00:00+00:00 [queued]>
+[2024-06-26T04:38:55.667+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 4
+[2024-06-26T04:38:55.674+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): load_market_data> on 2024-06-25 00:00:00+00:00
+[2024-06-26T04:38:55.677+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=68) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-06-26T04:38:55.678+0000] {standard_task_runner.py:63} INFO - Started process 70 to run task
+[2024-06-26T04:38:55.678+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'load_market_data', 'scheduled__2024-06-25T00:00:00+00:00', '--job-id', '87', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmp0oprztnq']
+[2024-06-26T04:38:55.679+0000] {standard_task_runner.py:91} INFO - Job 87: Subtask load_market_data
+[2024-06-26T04:38:55.725+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.load_market_data scheduled__2024-06-25T00:00:00+00:00 [running]> on host f3f48f0457b9
+[2024-06-26T04:38:55.825+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='load_market_data' AIRFLOW_CTX_EXECUTION_DATE='2024-06-25T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-25T00:00:00+00:00'
+[2024-06-26T04:38:55.826+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-06-26T04:38:55.836+0000] {base.py:84} INFO - Using connection ID 'market_database_conn' for task execution.
+[2024-06-26T04:38:55.858+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-06-26T04:38:55.858+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1890, in _execute_context
+    self.dialect.do_executemany(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 982, in do_executemany
+    context._psycopg2_fetched_rows = xtras.execute_values(
+                                     ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg2/extras.py", line 1299, in execute_values
+    cur.execute(b''.join(parts))
+psycopg2.errors.UndefinedColumn: column "vw" of relation "market_data" does not exist
+LINE 1: INSERT INTO market_data (volume, vw, opening_price, closing_...
+                                         ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/decorators/base.py", line 265, in execute
+    return_value = super().execute(context)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/etl.py", line 75, in load_market_data
+    flattened_dataframe.to_sql(
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/util/_decorators.py", line 333, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/generic.py", line 3008, in to_sql
+    return sql.to_sql(
+           ^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 788, in to_sql
+    return pandas_sql.to_sql(
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1958, in to_sql
+    total_inserted = sql_engine.insert_records(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1507, in insert_records
+    raise err
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1498, in insert_records
+    return table.insert(chunksize=chunksize, method=method)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1059, in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 951, in _execute_insert
+    result = conn.execute(self.table.insert(), data)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1385, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1890, in _execute_context
+    self.dialect.do_executemany(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 982, in do_executemany
+    context._psycopg2_fetched_rows = xtras.execute_values(
+                                     ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg2/extras.py", line 1299, in execute_values
+    cur.execute(b''.join(parts))
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column "vw" of relation "market_data" does not exist
+LINE 1: INSERT INTO market_data (volume, vw, opening_price, closing_...
+                                         ^
+
+[SQL: INSERT INTO market_data (volume, vw, opening_price, closing_price, high_price, low_price, timestamp, n, symbol) VALUES (%(volume)s, %(vw)s, %(opening_price)s, %(closing_price)s, %(high_price)s, %(low_price)s, %(timestamp)s, %(n)s, %(symbol)s)]
+[parameters: ({'volume': 47314924.0, 'vw': 149.8529, 'opening_price': 151.54, 'closing_price': 149.93, 'high_price': 152.38, 'low_price': 148.39, 'timestamp': datetime.datetime(2024, 1, 2, 5, 0), 'n': 476432, 'symbol': 'AMZN'}, {'volume': 49410095.0, 'vw': 149.4055, 'opening_price': 149.2, 'closing_price': 148.47, 'high_price': 151.05, 'low_price': 148.33, 'timestamp': datetime.datetime(2024, 1, 3, 5, 0), 'n': 416954, 'symbol': 'AMZN'}, {'volume': 56039807.0, 'vw': 145.416, 'opening_price': 145.59, 'closing_price': 144.57, 'high_price': 147.38, 'low_price': 144.05, 'timestamp': datetime.datetime(2024, 1, 4, 5, 0), 'n': 541342, 'symbol': 'AMZN'}, {'volume': 45003147.0, 'vw': 145.4485, 'opening_price': 144.69, 'closing_price': 145.24, 'high_price': 146.59, 'low_price': 144.53, 'timestamp': datetime.datetime(2024, 1, 5, 5, 0), 'n': 380385, 'symbol': 'AMZN'}, {'volume': 46757053.0, 'vw': 148.3238, 'opening_price': 146.74, 'closing_price': 149.1, 'high_price': 149.4, 'low_price': 146.15, 'timestamp': datetime.datetime(2024, 1, 8, 5, 0), 'n': 410733, 'symbol': 'AMZN'}, {'volume': 43812567.0, 'vw': 150.6311, 'opening_price': 148.33, 'closing_price': 151.37, 'high_price': 151.71, 'low_price': 148.21, 'timestamp': datetime.datetime(2024, 1, 9, 5, 0), 'n': 403026, 'symbol': 'AMZN'}, {'volume': 44421830.0, 'vw': 153.4523, 'opening_price': 152.06, 'closing_price': 153.73, 'high_price': 154.42, 'low_price': 151.881, 'timestamp': datetime.datetime(2024, 1, 10, 5, 0), 'n': 430517, 'symbol': 'AMZN'}, {'volume': 49072691.0, 'vw': 155.0181, 'opening_price': 155.04, 'closing_price': 155.18, 'high_price': 157.17, 'low_price': 153.12, 'timestamp': datetime.datetime(2024, 1, 11, 5, 0), 'n': 468131, 'symbol': 'AMZN'}  ... displaying 10 of 120 total bound parameter sets ...  {'volume': 66858255.0, 'vw': 188.0574, 'opening_price': 187.8, 'closing_price': 189.08, 'high_price': 189.275, 'low_price': 185.86, 'timestamp': datetime.datetime(2024, 6, 21, 4, 0), 'n': 435715, 'symbol': 'AMZN'}, {'volume': 48143614.0, 'vw': 187.3312, 'opening_price': 189.33, 'closing_price': 185.57, 'high_price': 191.0, 'low_price': 185.33, 'timestamp': datetime.datetime(2024, 6, 24, 4, 0), 'n': 535288, 'symbol': 'AMZN'})]
+(Background on this error at: https://sqlalche.me/e/14/f405)
+[2024-06-26T04:38:55.871+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=market_etl, task_id=load_market_data, run_id=scheduled__2024-06-25T00:00:00+00:00, execution_date=20240625T000000, start_date=20240626T043855, end_date=20240626T043855
+[2024-06-26T04:38:55.882+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 87 for task load_market_data ((psycopg2.errors.UndefinedColumn) column "vw" of relation "market_data" does not exist
+LINE 1: INSERT INTO market_data (volume, vw, opening_price, closing_...
+                                         ^
+
+[SQL: INSERT INTO market_data (volume, vw, opening_price, closing_price, high_price, low_price, timestamp, n, symbol) VALUES (%(volume)s, %(vw)s, %(opening_price)s, %(closing_price)s, %(high_price)s, %(low_price)s, %(timestamp)s, %(n)s, %(symbol)s)]
+[parameters: ({'volume': 47314924.0, 'vw': 149.8529, 'opening_price': 151.54, 'closing_price': 149.93, 'high_price': 152.38, 'low_price': 148.39, 'timestamp': datetime.datetime(2024, 1, 2, 5, 0), 'n': 476432, 'symbol': 'AMZN'}, {'volume': 49410095.0, 'vw': 149.4055, 'opening_price': 149.2, 'closing_price': 148.47, 'high_price': 151.05, 'low_price': 148.33, 'timestamp': datetime.datetime(2024, 1, 3, 5, 0), 'n': 416954, 'symbol': 'AMZN'}, {'volume': 56039807.0, 'vw': 145.416, 'opening_price': 145.59, 'closing_price': 144.57, 'high_price': 147.38, 'low_price': 144.05, 'timestamp': datetime.datetime(2024, 1, 4, 5, 0), 'n': 541342, 'symbol': 'AMZN'}, {'volume': 45003147.0, 'vw': 145.4485, 'opening_price': 144.69, 'closing_price': 145.24, 'high_price': 146.59, 'low_price': 144.53, 'timestamp': datetime.datetime(2024, 1, 5, 5, 0), 'n': 380385, 'symbol': 'AMZN'}, {'volume': 46757053.0, 'vw': 148.3238, 'opening_price': 146.74, 'closing_price': 149.1, 'high_price': 149.4, 'low_price': 146.15, 'timestamp': datetime.datetime(2024, 1, 8, 5, 0), 'n': 410733, 'symbol': 'AMZN'}, {'volume': 43812567.0, 'vw': 150.6311, 'opening_price': 148.33, 'closing_price': 151.37, 'high_price': 151.71, 'low_price': 148.21, 'timestamp': datetime.datetime(2024, 1, 9, 5, 0), 'n': 403026, 'symbol': 'AMZN'}, {'volume': 44421830.0, 'vw': 153.4523, 'opening_price': 152.06, 'closing_price': 153.73, 'high_price': 154.42, 'low_price': 151.881, 'timestamp': datetime.datetime(2024, 1, 10, 5, 0), 'n': 430517, 'symbol': 'AMZN'}, {'volume': 49072691.0, 'vw': 155.0181, 'opening_price': 155.04, 'closing_price': 155.18, 'high_price': 157.17, 'low_price': 153.12, 'timestamp': datetime.datetime(2024, 1, 11, 5, 0), 'n': 468131, 'symbol': 'AMZN'}  ... displaying 10 of 120 total bound parameter sets ...  {'volume': 66858255.0, 'vw': 188.0574, 'opening_price': 187.8, 'closing_price': 189.08, 'high_price': 189.275, 'low_price': 185.86, 'timestamp': datetime.datetime(2024, 6, 21, 4, 0), 'n': 435715, 'symbol': 'AMZN'}, {'volume': 48143614.0, 'vw': 187.3312, 'opening_price': 189.33, 'closing_price': 185.57, 'high_price': 191.0, 'low_price': 185.33, 'timestamp': datetime.datetime(2024, 6, 24, 4, 0), 'n': 535288, 'symbol': 'AMZN'})]
+(Background on this error at: https://sqlalche.me/e/14/f405); 70)
+[2024-06-26T04:38:55.899+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-06-26T04:38:55.914+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-06-26T04:38:55.915+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-06T12:25:57.053+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-06T12:25:57.061+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.load_market_data scheduled__2024-06-25T00:00:00+00:00 [queued]>
+[2024-07-06T12:25:57.066+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.load_market_data scheduled__2024-06-25T00:00:00+00:00 [queued]>
+[2024-07-06T12:25:57.066+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 4
+[2024-07-06T12:25:57.071+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): load_market_data> on 2024-06-25 00:00:00+00:00
+[2024-07-06T12:25:57.078+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=151) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-06T12:25:57.080+0000] {standard_task_runner.py:63} INFO - Started process 153 to run task
+[2024-07-06T12:25:57.081+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'market_etl', 'load_market_data', 'scheduled__2024-06-25T00:00:00+00:00', '--job-id', '6', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpbd_5w0_r']
+[2024-07-06T12:25:57.083+0000] {standard_task_runner.py:91} INFO - Job 6: Subtask load_market_data
+[2024-07-06T12:25:57.112+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.load_market_data scheduled__2024-06-25T00:00:00+00:00 [running]> on host 97487d04705a
+[2024-07-06T12:25:57.194+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='load_market_data' AIRFLOW_CTX_EXECUTION_DATE='2024-06-25T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-25T00:00:00+00:00'
+[2024-07-06T12:25:57.196+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-06T12:25:57.205+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-06T12:25:57.209+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/decorators/base.py", line 265, in execute
+    return_value = super().execute(context)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/etl.py", line 66, in load_market_data
+    market_database_conn = market_database_hook.get_sqlalchemy_engine()
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/common/sql/hooks/sql.py", line 239, in get_sqlalchemy_engine
+    return create_engine(self.get_uri(), **engine_kwargs)
+                         ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/postgres/hooks/postgres.py", line 204, in get_uri
+    return self.sqlalchemy_url.render_as_string(hide_password=False)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/postgres/hooks/postgres.py", line 119, in sqlalchemy_url
+    conn = self.get_connection(getattr(self, self.conn_name_attr))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/hooks/base.py", line 83, in get_connection
+    conn = Connection.get_connection_from_secrets(conn_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/connection.py", line 519, in get_connection_from_secrets
+    raise AirflowNotFoundException(f"The conn_id `{conn_id}` isn't defined")
+airflow.exceptions.AirflowNotFoundException: The conn_id `market_database_conn` isn't defined
+[2024-07-06T12:25:57.213+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=market_etl, task_id=load_market_data, run_id=scheduled__2024-06-25T00:00:00+00:00, execution_date=20240625T000000, start_date=20240706T122557, end_date=20240706T122557
+[2024-07-06T12:25:57.219+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 6 for task load_market_data (The conn_id `market_database_conn` isn't defined; 153)
+[2024-07-06T12:25:57.267+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-07-06T12:25:57.276+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-06T12:25:57.277+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-06T12:37:19.758+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-06T12:37:19.767+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.load_market_data scheduled__2024-06-25T00:00:00+00:00 [queued]>
+[2024-07-06T12:37:19.770+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.load_market_data scheduled__2024-06-25T00:00:00+00:00 [queued]>
+[2024-07-06T12:37:19.771+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 4
+[2024-07-06T12:37:19.776+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): load_market_data> on 2024-06-25 00:00:00+00:00
+[2024-07-06T12:37:19.780+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=144) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-06T12:37:19.782+0000] {standard_task_runner.py:63} INFO - Started process 146 to run task
+[2024-07-06T12:37:19.781+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'market_etl', 'load_market_data', 'scheduled__2024-06-25T00:00:00+00:00', '--job-id', '6', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpjxag_0if']
+[2024-07-06T12:37:19.783+0000] {standard_task_runner.py:91} INFO - Job 6: Subtask load_market_data
+[2024-07-06T12:37:19.807+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.load_market_data scheduled__2024-06-25T00:00:00+00:00 [running]> on host 0b441d8ce42a
+[2024-07-06T12:37:19.910+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='load_market_data' AIRFLOW_CTX_EXECUTION_DATE='2024-06-25T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-25T00:00:00+00:00'
+[2024-07-06T12:37:19.911+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-06T12:37:19.917+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-06T12:37:19.921+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/decorators/base.py", line 265, in execute
+    return_value = super().execute(context)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/etl.py", line 66, in load_market_data
+    market_database_conn = market_database_hook.get_sqlalchemy_engine()
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/common/sql/hooks/sql.py", line 239, in get_sqlalchemy_engine
+    return create_engine(self.get_uri(), **engine_kwargs)
+                         ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/postgres/hooks/postgres.py", line 204, in get_uri
+    return self.sqlalchemy_url.render_as_string(hide_password=False)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/postgres/hooks/postgres.py", line 119, in sqlalchemy_url
+    conn = self.get_connection(getattr(self, self.conn_name_attr))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/hooks/base.py", line 83, in get_connection
+    conn = Connection.get_connection_from_secrets(conn_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/connection.py", line 519, in get_connection_from_secrets
+    raise AirflowNotFoundException(f"The conn_id `{conn_id}` isn't defined")
+airflow.exceptions.AirflowNotFoundException: The conn_id `market_database_conn` isn't defined
+[2024-07-06T12:37:19.925+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=market_etl, task_id=load_market_data, run_id=scheduled__2024-06-25T00:00:00+00:00, execution_date=20240625T000000, start_date=20240706T123719, end_date=20240706T123719
+[2024-07-06T12:37:19.932+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 6 for task load_market_data (The conn_id `market_database_conn` isn't defined; 146)
+[2024-07-06T12:37:19.966+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-07-06T12:37:19.976+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-06T12:37:19.977+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-06T12:46:12.531+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-06T12:46:12.539+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.load_market_data scheduled__2024-06-25T00:00:00+00:00 [queued]>
+[2024-07-06T12:46:12.543+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.load_market_data scheduled__2024-06-25T00:00:00+00:00 [queued]>
+[2024-07-06T12:46:12.543+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 4
+[2024-07-06T12:46:12.548+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): load_market_data> on 2024-06-25 00:00:00+00:00
+[2024-07-06T12:46:12.552+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=144) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-06T12:46:12.553+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'market_etl', 'load_market_data', 'scheduled__2024-06-25T00:00:00+00:00', '--job-id', '6', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpxcekqd6_']
+[2024-07-06T12:46:12.555+0000] {standard_task_runner.py:63} INFO - Started process 146 to run task
+[2024-07-06T12:46:12.555+0000] {standard_task_runner.py:91} INFO - Job 6: Subtask load_market_data
+[2024-07-06T12:46:12.580+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.load_market_data scheduled__2024-06-25T00:00:00+00:00 [running]> on host 03e268ada1a3
+[2024-07-06T12:46:12.696+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='load_market_data' AIRFLOW_CTX_EXECUTION_DATE='2024-06-25T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-25T00:00:00+00:00'
+[2024-07-06T12:46:12.697+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-06T12:46:12.702+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-06T12:46:12.706+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/decorators/base.py", line 265, in execute
+    return_value = super().execute(context)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/etl.py", line 66, in load_market_data
+    market_database_conn = market_database_hook.get_sqlalchemy_engine()
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/common/sql/hooks/sql.py", line 239, in get_sqlalchemy_engine
+    return create_engine(self.get_uri(), **engine_kwargs)
+                         ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/postgres/hooks/postgres.py", line 204, in get_uri
+    return self.sqlalchemy_url.render_as_string(hide_password=False)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/postgres/hooks/postgres.py", line 119, in sqlalchemy_url
+    conn = self.get_connection(getattr(self, self.conn_name_attr))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/hooks/base.py", line 83, in get_connection
+    conn = Connection.get_connection_from_secrets(conn_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/connection.py", line 519, in get_connection_from_secrets
+    raise AirflowNotFoundException(f"The conn_id `{conn_id}` isn't defined")
+airflow.exceptions.AirflowNotFoundException: The conn_id `market_database_conn` isn't defined
+[2024-07-06T12:46:12.712+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=market_etl, task_id=load_market_data, run_id=scheduled__2024-06-25T00:00:00+00:00, execution_date=20240625T000000, start_date=20240706T124612, end_date=20240706T124612
+[2024-07-06T12:46:12.718+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 6 for task load_market_data (The conn_id `market_database_conn` isn't defined; 146)
+[2024-07-06T12:46:12.739+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-07-06T12:46:12.749+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-06T12:46:12.749+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

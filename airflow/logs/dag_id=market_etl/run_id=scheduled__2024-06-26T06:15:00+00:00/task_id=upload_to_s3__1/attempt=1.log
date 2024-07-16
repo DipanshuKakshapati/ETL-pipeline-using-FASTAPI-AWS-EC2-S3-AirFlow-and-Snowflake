@@ -1,0 +1,158 @@
+[2024-07-11T06:52:32.732+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-11T06:52:32.795+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.upload_to_s3__1 scheduled__2024-06-26T06:15:00+00:00 [queued]>
+[2024-07-11T06:52:32.805+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.upload_to_s3__1 scheduled__2024-06-26T06:15:00+00:00 [queued]>
+[2024-07-11T06:52:32.805+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-11T06:52:32.816+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): upload_to_s3__1> on 2024-06-26 06:15:00+00:00
+[2024-07-11T06:52:32.861+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=148) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-11T06:52:32.865+0000] {standard_task_runner.py:63} INFO - Started process 157 to run task
+[2024-07-11T06:52:32.868+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'upload_to_s3__1', 'scheduled__2024-06-26T06:15:00+00:00', '--job-id', '928', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmphn31y3mw']
+[2024-07-11T06:52:32.882+0000] {standard_task_runner.py:91} INFO - Job 928: Subtask upload_to_s3__1
+[2024-07-11T06:52:33.055+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.upload_to_s3__1 scheduled__2024-06-26T06:15:00+00:00 [running]> on host aa283b53dd54
+[2024-07-11T06:52:33.526+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='upload_to_s3__1' AIRFLOW_CTX_EXECUTION_DATE='2024-06-26T06:15:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-26T06:15:00+00:00'
+[2024-07-11T06:52:33.530+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-11T06:52:33.620+0000] {base.py:84} INFO - Using connection ID 'aws_default' for task execution.
+[2024-07-11T06:52:33.621+0000] {connection_wrapper.py:384} INFO - AWS Connection (conn_id='aws_default', conn_type='aws') credentials retrieved from login and password.
+[2024-07-11T06:52:33.622+0000] {connection_wrapper.py:401} INFO - AWS Connection (conn_id='aws_default', conn_type='aws') session token retrieved from extra, please note you are responsible for renewing these.
+[2024-07-11T06:52:35.958+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-11T06:52:35.966+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/decorators/base.py", line 265, in execute
+    return_value = super().execute(context)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/etl.py", line 145, in upload_to_s3
+    s3_hook.load_string(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/amazon/aws/hooks/s3.py", line 135, in wrapper
+    return func(*bound_args.args, **bound_args.kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/amazon/aws/hooks/s3.py", line 89, in wrapper
+    return func(*bound_args.args, **bound_args.kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/amazon/aws/hooks/s3.py", line 1149, in load_string
+    self._upload_file_obj(f, key, bucket_name, replace, encrypt, acl_policy)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/amazon/aws/hooks/s3.py", line 1232, in _upload_file_obj
+    client.upload_fileobj(
+  File "/home/airflow/.local/lib/python3.12/site-packages/boto3/s3/inject.py", line 642, in upload_fileobj
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/s3transfer/futures.py", line 103, in result
+    return self._coordinator.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/s3transfer/futures.py", line 266, in result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/s3transfer/tasks.py", line 139, in __call__
+    return self._execute_main(kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/s3transfer/tasks.py", line 162, in _execute_main
+    return_value = self._main(**kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/s3transfer/upload.py", line 764, in _main
+    client.put_object(Bucket=bucket, Key=key, Body=body, **extra_args)
+  File "/home/airflow/.local/lib/python3.12/site-packages/botocore/client.py", line 565, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/botocore/client.py", line 1021, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.NoSuchBucket: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
+[2024-07-11T06:52:36.113+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=market_etl, task_id=upload_to_s3__1, run_id=scheduled__2024-06-26T06:15:00+00:00, execution_date=20240626T061500, start_date=20240711T065232, end_date=20240711T065236
+[2024-07-11T06:52:36.174+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 928 for task upload_to_s3__1 (An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist; 157)
+[2024-07-11T06:52:36.237+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-07-11T06:52:36.275+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-11T07:59:01.519+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-11T07:59:01.540+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.upload_to_s3__1 scheduled__2024-06-26T06:15:00+00:00 [queued]>
+[2024-07-11T07:59:01.548+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.upload_to_s3__1 scheduled__2024-06-26T06:15:00+00:00 [queued]>
+[2024-07-11T07:59:01.549+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-11T07:59:01.558+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): upload_to_s3__1> on 2024-06-26 06:15:00+00:00
+[2024-07-11T07:59:01.569+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=1068) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-11T07:59:01.574+0000] {standard_task_runner.py:63} INFO - Started process 1074 to run task
+[2024-07-11T07:59:01.579+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'upload_to_s3__1', 'scheduled__2024-06-26T06:15:00+00:00', '--job-id', '1056', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpm9geu93x']
+[2024-07-11T07:59:01.582+0000] {standard_task_runner.py:91} INFO - Job 1056: Subtask upload_to_s3__1
+[2024-07-11T07:59:01.672+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.upload_to_s3__1 scheduled__2024-06-26T06:15:00+00:00 [running]> on host aa283b53dd54
+[2024-07-11T07:59:01.907+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='upload_to_s3__1' AIRFLOW_CTX_EXECUTION_DATE='2024-06-26T06:15:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-06-26T06:15:00+00:00'
+[2024-07-11T07:59:01.909+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-11T07:59:01.925+0000] {base.py:84} INFO - Using connection ID 'aws_default' for task execution.
+[2024-07-11T07:59:01.926+0000] {connection_wrapper.py:384} INFO - AWS Connection (conn_id='aws_default', conn_type='aws') credentials retrieved from login and password.
+[2024-07-11T07:59:01.926+0000] {connection_wrapper.py:401} INFO - AWS Connection (conn_id='aws_default', conn_type='aws') session token retrieved from extra, please note you are responsible for renewing these.
+[2024-07-11T07:59:03.551+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-11T07:59:03.553+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/decorators/base.py", line 265, in execute
+    return_value = super().execute(context)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/etl.py", line 145, in upload_to_s3
+    s3_hook.load_string(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/amazon/aws/hooks/s3.py", line 135, in wrapper
+    return func(*bound_args.args, **bound_args.kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/amazon/aws/hooks/s3.py", line 89, in wrapper
+    return func(*bound_args.args, **bound_args.kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/amazon/aws/hooks/s3.py", line 1149, in load_string
+    self._upload_file_obj(f, key, bucket_name, replace, encrypt, acl_policy)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/amazon/aws/hooks/s3.py", line 1232, in _upload_file_obj
+    client.upload_fileobj(
+  File "/home/airflow/.local/lib/python3.12/site-packages/boto3/s3/inject.py", line 642, in upload_fileobj
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/s3transfer/futures.py", line 103, in result
+    return self._coordinator.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/s3transfer/futures.py", line 266, in result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/s3transfer/tasks.py", line 139, in __call__
+    return self._execute_main(kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/s3transfer/tasks.py", line 162, in _execute_main
+    return_value = self._main(**kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/s3transfer/upload.py", line 764, in _main
+    client.put_object(Bucket=bucket, Key=key, Body=body, **extra_args)
+  File "/home/airflow/.local/lib/python3.12/site-packages/botocore/client.py", line 565, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/botocore/client.py", line 1021, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.NoSuchBucket: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist
+[2024-07-11T07:59:03.570+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=market_etl, task_id=upload_to_s3__1, run_id=scheduled__2024-06-26T06:15:00+00:00, execution_date=20240626T061500, start_date=20240711T075901, end_date=20240711T075903
+[2024-07-11T07:59:03.587+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 1056 for task upload_to_s3__1 (An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist; 1074)
+[2024-07-11T07:59:03.607+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-07-11T07:59:03.643+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

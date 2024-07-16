@@ -1,0 +1,129 @@
+[2024-07-10T09:15:40.672+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-10T09:15:40.704+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.create_price_dimension scheduled__2024-07-01T06:15:00+00:00 [queued]>
+[2024-07-10T09:15:40.717+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.create_price_dimension scheduled__2024-07-01T06:15:00+00:00 [queued]>
+[2024-07-10T09:15:40.718+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-10T09:15:40.739+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): create_price_dimension> on 2024-07-01 06:15:00+00:00
+[2024-07-10T09:15:40.759+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=646) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-10T09:15:40.764+0000] {standard_task_runner.py:63} INFO - Started process 653 to run task
+[2024-07-10T09:15:40.767+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'create_price_dimension', 'scheduled__2024-07-01T06:15:00+00:00', '--job-id', '341', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpr97bbu_7']
+[2024-07-10T09:15:40.776+0000] {standard_task_runner.py:91} INFO - Job 341: Subtask create_price_dimension
+[2024-07-10T09:15:40.857+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.create_price_dimension scheduled__2024-07-01T06:15:00+00:00 [running]> on host 514b016b59c3
+[2024-07-10T09:15:41.191+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='create_price_dimension' AIRFLOW_CTX_EXECUTION_DATE='2024-07-01T06:15:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-07-01T06:15:00+00:00'
+[2024-07-10T09:15:41.196+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-10T09:15:41.216+0000] {python.py:237} INFO - Done. Returned value was:     SECURITY_ID  OPEN_PRICE  ...  Close_Date                   PRICE_ID
+0          ADBL       286.1  ...  2024-07-09   ADBL_2024-07-09 00:00:00
+1           AHL       520.0  ...  2024-07-09    AHL_2024-07-09 00:00:00
+2          AHPC       157.2  ...  2024-07-09   AHPC_2024-07-09 00:00:00
+3         AKJCL       220.2  ...  2024-07-09  AKJCL_2024-07-09 00:00:00
+4          AKPL       162.6  ...  2024-07-09   AKPL_2024-07-09 00:00:00
+..          ...         ...  ...         ...                        ...
+310        USHL       588.0  ...  2024-07-09   USHL_2024-07-09 00:00:00
+311        USLB      1765.0  ...  2024-07-09   USLB_2024-07-09 00:00:00
+312        VLBS      1050.0  ...  2024-07-09   VLBS_2024-07-09 00:00:00
+313       VLUCL       508.0  ...  2024-07-09  VLUCL_2024-07-09 00:00:00
+314        WNLB      1441.0  ...  2024-07-09   WNLB_2024-07-09 00:00:00
+
+[315 rows x 9 columns]
+[2024-07-10T09:15:41.246+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-10T09:15:41.298+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=create_price_dimension, run_id=scheduled__2024-07-01T06:15:00+00:00, execution_date=20240701T061500, start_date=20240710T091540, end_date=20240710T091541
+[2024-07-10T09:15:41.322+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-10T09:15:41.352+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-10T09:54:25.302+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-10T09:54:25.318+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.create_price_dimension scheduled__2024-07-01T06:15:00+00:00 [queued]>
+[2024-07-10T09:54:25.324+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.create_price_dimension scheduled__2024-07-01T06:15:00+00:00 [queued]>
+[2024-07-10T09:54:25.328+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-10T09:54:25.351+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): create_price_dimension> on 2024-07-01 06:15:00+00:00
+[2024-07-10T09:54:25.363+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=678) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-10T09:54:25.365+0000] {standard_task_runner.py:63} INFO - Started process 682 to run task
+[2024-07-10T09:54:25.367+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'create_price_dimension', 'scheduled__2024-07-01T06:15:00+00:00', '--job-id', '594', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpnr6n8bdy']
+[2024-07-10T09:54:25.369+0000] {standard_task_runner.py:91} INFO - Job 594: Subtask create_price_dimension
+[2024-07-10T09:54:25.430+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.create_price_dimension scheduled__2024-07-01T06:15:00+00:00 [running]> on host 514b016b59c3
+[2024-07-10T09:54:25.653+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='create_price_dimension' AIRFLOW_CTX_EXECUTION_DATE='2024-07-01T06:15:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-07-01T06:15:00+00:00'
+[2024-07-10T09:54:25.654+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-10T09:54:25.659+0000] {python.py:237} INFO - Done. Returned value was:     SECURITY_ID  OPEN_PRICE  ...  PREVIOUS_DAY_PRICE          PRICE_ID
+0          ADBL       286.1  ...               280.5   ADBL_2024-07-09
+1           AHL       520.0  ...               517.0    AHL_2024-07-09
+2          AHPC       157.2  ...               155.0   AHPC_2024-07-09
+3         AKJCL       220.2  ...               224.0  AKJCL_2024-07-09
+4          AKPL       162.6  ...               162.5   AKPL_2024-07-09
+..          ...         ...  ...                 ...               ...
+310        USHL       588.0  ...               582.0   USHL_2024-07-09
+311        USLB      1765.0  ...              1731.9   USLB_2024-07-09
+312        VLBS      1050.0  ...              1030.0   VLBS_2024-07-09
+313       VLUCL       508.0  ...               508.8  VLUCL_2024-07-09
+314        WNLB      1441.0  ...              1449.0   WNLB_2024-07-09
+
+[315 rows x 8 columns]
+[2024-07-10T09:54:25.666+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-10T09:54:25.696+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=create_price_dimension, run_id=scheduled__2024-07-01T06:15:00+00:00, execution_date=20240701T061500, start_date=20240710T095425, end_date=20240710T095425
+[2024-07-10T09:54:25.711+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-10T09:54:25.737+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-10T11:36:35.277+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-10T11:36:35.300+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.create_price_dimension scheduled__2024-07-01T06:15:00+00:00 [queued]>
+[2024-07-10T11:36:35.310+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.create_price_dimension scheduled__2024-07-01T06:15:00+00:00 [queued]>
+[2024-07-10T11:36:35.311+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-10T11:36:35.325+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): create_price_dimension> on 2024-07-01 06:15:00+00:00
+[2024-07-10T11:36:35.340+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=799) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-10T11:36:35.346+0000] {standard_task_runner.py:63} INFO - Started process 803 to run task
+[2024-07-10T11:36:35.347+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'create_price_dimension', 'scheduled__2024-07-01T06:15:00+00:00', '--job-id', '747', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmp2x6slwlr']
+[2024-07-10T11:36:35.352+0000] {standard_task_runner.py:91} INFO - Job 747: Subtask create_price_dimension
+[2024-07-10T11:36:35.452+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.create_price_dimension scheduled__2024-07-01T06:15:00+00:00 [running]> on host 514b016b59c3
+[2024-07-10T11:36:35.765+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='create_price_dimension' AIRFLOW_CTX_EXECUTION_DATE='2024-07-01T06:15:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-07-01T06:15:00+00:00'
+[2024-07-10T11:36:35.767+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-10T11:36:35.777+0000] {python.py:237} INFO - Done. Returned value was:     SECURITY_ID  OPEN_PRICE  ...  PREVIOUS_DAY_PRICE          PRICE_ID
+0          ADBL       286.1  ...               280.5   ADBL_2024-07-09
+1           AHL       520.0  ...               517.0    AHL_2024-07-09
+2          AHPC       157.2  ...               155.0   AHPC_2024-07-09
+3         AKJCL       220.2  ...               224.0  AKJCL_2024-07-09
+4          AKPL       162.6  ...               162.5   AKPL_2024-07-09
+..          ...         ...  ...                 ...               ...
+310        USHL       588.0  ...               582.0   USHL_2024-07-09
+311        USLB      1765.0  ...              1731.9   USLB_2024-07-09
+312        VLBS      1050.0  ...              1030.0   VLBS_2024-07-09
+313       VLUCL       508.0  ...               508.8  VLUCL_2024-07-09
+314        WNLB      1441.0  ...              1449.0   WNLB_2024-07-09
+
+[315 rows x 8 columns]
+[2024-07-10T11:36:35.798+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-10T11:36:35.857+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=create_price_dimension, run_id=scheduled__2024-07-01T06:15:00+00:00, execution_date=20240701T061500, start_date=20240710T113635, end_date=20240710T113635
+[2024-07-10T11:36:35.925+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-10T11:36:35.984+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2024-07-11T08:19:26.393+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-11T08:19:26.412+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.create_price_dimension scheduled__2024-07-01T06:15:00+00:00 [queued]>
+[2024-07-11T08:19:26.419+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.create_price_dimension scheduled__2024-07-01T06:15:00+00:00 [queued]>
+[2024-07-11T08:19:26.420+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-07-11T08:19:26.429+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): create_price_dimension> on 2024-07-01 06:15:00+00:00
+[2024-07-11T08:19:26.442+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=648) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-11T08:19:26.444+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'create_price_dimension', 'scheduled__2024-07-01T06:15:00+00:00', '--job-id', '1139', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmp4n3msmn_']
+[2024-07-11T08:19:26.446+0000] {standard_task_runner.py:63} INFO - Started process 653 to run task
+[2024-07-11T08:19:26.447+0000] {standard_task_runner.py:91} INFO - Job 1139: Subtask create_price_dimension
+[2024-07-11T08:19:26.516+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.create_price_dimension scheduled__2024-07-01T06:15:00+00:00 [running]> on host aa283b53dd54
+[2024-07-11T08:19:26.807+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='create_price_dimension' AIRFLOW_CTX_EXECUTION_DATE='2024-07-01T06:15:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-07-01T06:15:00+00:00'
+[2024-07-11T08:19:26.808+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-11T08:19:26.813+0000] {python.py:237} INFO - Done. Returned value was:     SECURITY_ID  OPEN_PRICE  ...  PREVIOUS_DAY_PRICE            PRICE_ID
+0          ADBL       283.0  ...               285.2     ADBL_2024-07-10
+1       ADBLD83      1118.0  ...              1138.5  ADBLD83_2024-07-10
+2           AHL       530.9  ...               521.3      AHL_2024-07-10
+3          AHPC       154.0  ...               154.8     AHPC_2024-07-10
+4         AKJCL       224.0  ...               221.0    AKJCL_2024-07-10
+..          ...         ...  ...                 ...                 ...
+316        USHL       580.0  ...               575.7     USHL_2024-07-10
+317        USLB      1833.0  ...              1797.9     USLB_2024-07-10
+318        VLBS      1060.0  ...              1050.0     VLBS_2024-07-10
+319       VLUCL       520.0  ...               513.0    VLUCL_2024-07-10
+320        WNLB      1550.0  ...              1522.0     WNLB_2024-07-10
+
+[321 rows x 8 columns]
+[2024-07-11T08:19:26.839+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-11T08:19:26.890+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=create_price_dimension, run_id=scheduled__2024-07-01T06:15:00+00:00, execution_date=20240701T061500, start_date=20240711T081926, end_date=20240711T081926
+[2024-07-11T08:19:26.914+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-11T08:19:26.967+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-07-11T08:19:26.968+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

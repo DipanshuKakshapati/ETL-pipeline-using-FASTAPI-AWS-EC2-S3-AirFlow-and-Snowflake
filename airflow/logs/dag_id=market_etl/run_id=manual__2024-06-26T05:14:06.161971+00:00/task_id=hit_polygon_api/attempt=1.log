@@ -1,0 +1,20 @@
+[2024-06-26T05:14:14.596+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-06-26T05:14:14.612+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_etl.hit_polygon_api manual__2024-06-26T05:14:06.161971+00:00 [queued]>
+[2024-06-26T05:14:14.618+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_etl.hit_polygon_api manual__2024-06-26T05:14:06.161971+00:00 [queued]>
+[2024-06-26T05:14:14.618+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 4
+[2024-06-26T05:14:14.625+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): hit_polygon_api> on 2024-06-26 05:14:06.161971+00:00
+[2024-06-26T05:14:14.628+0000] {warnings.py:112} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=72) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-06-26T05:14:14.628+0000] {standard_task_runner.py:63} INFO - Started process 74 to run task
+[2024-06-26T05:14:14.629+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'market_etl', 'hit_polygon_api', 'manual__2024-06-26T05:14:06.161971+00:00', '--job-id', '114', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmp52b_hl6o']
+[2024-06-26T05:14:14.630+0000] {standard_task_runner.py:91} INFO - Job 114: Subtask hit_polygon_api
+[2024-06-26T05:14:14.670+0000] {task_command.py:426} INFO - Running <TaskInstance: market_etl.hit_polygon_api manual__2024-06-26T05:14:06.161971+00:00 [running]> on host f3f48f0457b9
+[2024-06-26T05:14:14.740+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='market_etl' AIRFLOW_CTX_TASK_ID='hit_polygon_api' AIRFLOW_CTX_EXECUTION_DATE='2024-06-26T05:14:06.161971+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-06-26T05:14:06.161971+00:00'
+[2024-06-26T05:14:14.741+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-06-26T05:14:15.865+0000] {python.py:237} INFO - Done. Returned value was: {'ticker': 'AMZN', 'queryCount': 1, 'resultsCount': 1, 'adjusted': True, 'results': [{'v': 44586537.0, 'vw': 186.97, 'o': 186.81, 'c': 186.34, 'h': 188.84, 'l': 185.42, 't': 1719288000000, 'n': 382026}], 'status': 'OK', 'request_id': '6dff8ef6f19bfa3da2a41688ad45c915', 'count': 1}
+[2024-06-26T05:14:15.868+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-06-26T05:14:15.909+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=market_etl, task_id=hit_polygon_api, run_id=manual__2024-06-26T05:14:06.161971+00:00, execution_date=20240626T051406, start_date=20240626T051414, end_date=20240626T051415
+[2024-06-26T05:14:16.012+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-06-26T05:14:16.048+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-06-26T05:14:16.048+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

@@ -1,0 +1,18 @@
+[2024-07-08T04:19:30.407+0000] {processor.py:161} INFO - Started process (PID=29) to work on /opt/airflow/dags/etl.py
+[2024-07-08T04:19:30.409+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/etl.py for tasks to queue
+[2024-07-08T04:19:30.415+0000] {logging_mixin.py:188} INFO - [2024-07-08T04:19:30.415+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/etl.py
+[2024-07-08T04:19:31.144+0000] {processor.py:840} INFO - DAG(s) 'market_etl' retrieved from /opt/airflow/dags/etl.py
+[2024-07-08T04:19:31.194+0000] {logging_mixin.py:188} INFO - [2024-07-08T04:19:31.193+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-07-08T04:19:31.244+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/etl.py took 0.863 seconds
+[2024-07-08T05:28:37.234+0000] {processor.py:161} INFO - Started process (PID=29) to work on /opt/airflow/dags/etl.py
+[2024-07-08T05:28:37.235+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/etl.py for tasks to queue
+[2024-07-08T05:28:37.237+0000] {logging_mixin.py:188} INFO - [2024-07-08T05:28:37.237+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/etl.py
+[2024-07-08T05:28:37.805+0000] {processor.py:840} INFO - DAG(s) 'market_etl' retrieved from /opt/airflow/dags/etl.py
+[2024-07-08T05:28:37.824+0000] {logging_mixin.py:188} INFO - [2024-07-08T05:28:37.823+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-07-08T05:28:37.853+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/etl.py took 0.627 seconds
+[2024-07-08T05:29:08.191+0000] {processor.py:161} INFO - Started process (PID=36) to work on /opt/airflow/dags/etl.py
+[2024-07-08T05:29:08.195+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/etl.py for tasks to queue
+[2024-07-08T05:29:08.198+0000] {logging_mixin.py:188} INFO - [2024-07-08T05:29:08.197+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/etl.py
+[2024-07-08T05:29:08.813+0000] {processor.py:840} INFO - DAG(s) 'market_etl' retrieved from /opt/airflow/dags/etl.py
+[2024-07-08T05:29:08.855+0000] {logging_mixin.py:188} INFO - [2024-07-08T05:29:08.855+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-07-08T05:29:08.881+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/etl.py took 0.713 seconds

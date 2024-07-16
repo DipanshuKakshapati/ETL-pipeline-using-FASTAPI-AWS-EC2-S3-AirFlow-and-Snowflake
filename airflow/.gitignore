@@ -1,0 +1,7 @@
+# .gitignore content
+
+# Ignore .env files that contain environment variables
+.env
+
+# Ignore .pem files that contain AWS credentials
+*.pem
