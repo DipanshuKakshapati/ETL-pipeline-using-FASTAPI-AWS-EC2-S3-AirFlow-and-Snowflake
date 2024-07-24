@@ -35,6 +35,9 @@ To use this ETL pipeline, I used:
 ## Setup and Installation
 
 ### FastAPI Setup
+
+![FastAPI](https://github.com/DipanshuKakshapati/ETL-pipeline-using-FASTAPI-AWS-EC2-S3-AirFlow-and-Snowflake/blob/54e6851a1ec4a1d3befcb5b0a46530ef9923a9f6/assets/fastapi.png?raw=true)
+
 1. Cloned the repository.
 2. Installed dependencies: `pip install -r requirements.txt`.
 3. Hosted the FastAPI server at EC2 instance.
@@ -50,7 +53,7 @@ To use this ETL pipeline, I used:
 
 ### AWS Configuration
 
-
+![Airflow](https://github.com/DipanshuKakshapati/ETL-pipeline-using-FASTAPI-AWS-EC2-S3-AirFlow-and-Snowflake/blob/54e6851a1ec4a1d3befcb5b0a46530ef9923a9f6/assets/aws.png?raw=true)
 
 1. Configured an EC2 instance to host the Airflow scheduler and workers.
 2. Set up RDS for PostgreSQL database connectivity.
