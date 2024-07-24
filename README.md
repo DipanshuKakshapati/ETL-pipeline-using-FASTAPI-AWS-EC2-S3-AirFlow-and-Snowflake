@@ -4,11 +4,11 @@ This repository houses the implementation of an ETL (Extract, Transform, Load) p
 
 ## Overview
 
-The pipeline automates the collection, transformation, and storage of stock data. It starts by gathering data through a FastAPI service, followed by transformation processes that highlight gains and losses. The data is then stored in PostgreSQL, archived in AWS S3, and finally transferred to Snowflake for in-depth analysis.
+The pipeline automates the collection, transformation, and storage of stock data. It starts by gathering data through a FastAPI service/ The data is then stored in PostgreSQL, archived in AWS S3, and finally transferred to Snowflake for in-depth analysis.
 
 ## Architecture
 
-![ETL Pipeline Architecture](path/to/etl-diagram.png)  <!-- Replace with actual path to the image in your repository -->
+![ETL Pipeline Architecture](https://github.com/DipanshuKakshapati/ETL-pipeline-using-FASTAPI-AWS-EC2-S3-AirFlow-and-Snowflake/blob/e8ee56dab91732939f83caa25acba028efd45e2d/assets/etl-diagram.png?raw=true) 
 
 ### Component Overview
 
@@ -37,37 +37,36 @@ To use this ETL pipeline, I used:
 ### FastAPI Setup
 1. Cloned the repository.
 2. Installed dependencies: `pip install -r requirements.txt`.
-3. Hosted the FastAPI server in EC2 instance.
+3. Hosted the FastAPI server at EC2 instance.
 4. Access the FastAPI servicce in EC2 instance public IP address added with :8000 port.
 
 ### Airflow Setup
+
+![Airflow](https://github.com/DipanshuKakshapati/ETL-pipeline-using-FASTAPI-AWS-EC2-S3-AirFlow-and-Snowflake/blob/9603642e459feb2e84dab3415ef8790a73a3a6c9/assets/airflow.png?raw=true)
+
 1. Initialized the Airflow environment with Docker (`docker-compose.yml` provided).
 2. Started Airflow: `docker-compose up`.
-3. Access the Airflow UI in EC2 instance public IP address added with :8080 port.
+3. Access the Airflow UI at EC2 instance public IP address added with :8080 port.
 
 ### AWS Configuration
+
+
+
 1. Configured an EC2 instance to host the Airflow scheduler and workers.
 2. Set up RDS for PostgreSQL database connectivity.
-3. d S3 buckets for data archiving.
+3. Configure S3 buckets for data archiving.
 4. Set up SQS for triggering Snowflake data transfer when new files are uploaded in S3.
 5. Populated the `.env` file with the AWS and Snowflake credentials.
 
 ### Snowflake Configuration
+
+![Snowflake](https://github.com/DipanshuKakshapati/ETL-pipeline-using-FASTAPI-AWS-EC2-S3-AirFlow-and-Snowflake/blob/9603642e459feb2e84dab3415ef8790a73a3a6c9/assets/snowflake.png?raw=true)
+
 1. Configured storage integrations and other necessary settings in Snowflake.
 
 ## Usage
 
 Here are the steps to operate this ETL pipeline:
-1. **Initiate Data Processing**: An Airflow DAG task automatically sends API requests to the FastAPI server via the ngrok URL to start the data extraction process. This is part of the scheduled tasks in Airflow, which ensures that data processing begins as configured.
-2. **Monitor Tasks**: Access the Airflow UI at `localhost:8080` to monitor the progress of the ETL tasks. You can see the status of each task and debug logs if necessary.
+1. **Initiate Data Processing**: An Airflow DAG task automatically sends API requests to the FastAPI server via the EC2 URL to start the data extraction process. This is part of the scheduled tasks in Airflow, which ensures that data processing begins as configured.
+2. **Monitor Tasks**: Access the Airflow UI at EC2 instance public IP address added with :8080 port to monitor the progress of the ETL tasks. You can see the status of each task and debug logs if necessary.
 3. **Check Outputs**: After processing, check the AWS S3 bucket for data archives and Snowflake for detailed analysis outputs.
-
-
-
-
-### Shots of my live prediction model
-![Airflow](https://github.com/DipanshuKakshapati/ETL-pipeline-using-FASTAPI-AWS-EC2-S3-AirFlow-and-Snowflake/blob/9603642e459feb2e84dab3415ef8790a73a3a6c9/assets/airflow.png?raw=true)
-
-![Snowflake](https://github.com/DipanshuKakshapati/ETL-pipeline-using-FASTAPI-AWS-EC2-S3-AirFlow-and-Snowflake/blob/9603642e459feb2e84dab3415ef8790a73a3a6c9/assets/snowflake.png?raw=true)
-
-![Looker Studio](https://github.com/DipanshuKakshapati/ETL-pipeline-using-FASTAPI-AWS-EC2-S3-AirFlow-and-Snowflake/blob/9603642e459feb2e84dab3415ef8790a73a3a6c9/assets/lookerstudio.png?raw=true)
